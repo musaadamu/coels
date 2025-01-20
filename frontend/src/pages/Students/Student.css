@@ -1,0 +1,80 @@
+.student-page-container {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+.student-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.student-nav {
+    background-color: #3498db;
+    padding: 10px;
+}
+
+.student-nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.student-nav li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.student-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.student-nav a:hover {
+    text-decoration: underline;
+}
+
+.student-content {
+    margin-top: 20px;
+}
+
+.student-section {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.section-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.student-footer {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #3498db;
+    color: white;
+    border-radius: 8px;
+}

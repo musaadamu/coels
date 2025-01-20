@@ -1,0 +1,64 @@
+.student-affairs-office-container {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.affairs-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.affairs-nav {
+    background-color: #3498db;
+    padding: 10px;
+}
+
+.affairs-nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.affairs-nav li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.affairs-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.affairs-nav a:hover {
+    text-decoration: underline;
+}
+
+.affairs-content {
+    margin-top: 20px;
+}
+
+.affairs-section {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.section-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.affairs-footer {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #3498db;
+    color: white;
+    border-radius: 8px;
+}

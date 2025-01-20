@@ -1,0 +1,19 @@
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+    color: #fff; /* White text color */
+    padding: 10px 20px; /* Add padding around the text */
+    border-radius: 5px; /* Rounded corners for better aesthetics */
+    max-width: 80%; /* Limit the caption width for readability */
+    margin: 0 auto; /* Center align the caption */
+    text-align: center; /* Center the text */
+}
+
+.carousel-caption h5 {
+    font-size: 1.5rem; /* Reasonable size for heading text */
+    font-weight: bold; /* Bold font for the heading */
+}
+
+.carousel-caption p {
+    font-size: 1rem; /* Adjust paragraph text size */
+    margin-top: 5px; /* Add spacing between heading and paragraph */
+}
