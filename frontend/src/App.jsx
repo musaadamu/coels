@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import HomeScreen from './screens/HomeScreen';
 import LoginScreen from './screens/LoginScreen';
-import RegisterScreen from './screens/registerScreen';
+import registerScreen from './screens/registerScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import PrivateRoute from './components/PrivateRoute';
 import CollegeNameBanner from './components/CollegeNameBanner'
@@ -77,7 +77,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<HomeScreen />} />
             <Route path="/login" element={<LoginScreen />} />
-            <Route path="/register" element={<RegisterScreen />} />
+            <Route path="/register" element={<registerScreen />} />
             <Route path="" element={<PrivateRoute />}>
               <Route path="/profile" element={<ProfileScreen />} />
             </Route>
