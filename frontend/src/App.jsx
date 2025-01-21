@@ -12,7 +12,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // Import the components for individual pages
-import Provost from './pages/provost/Provost';
+import Provost from './pages/Provost/Provost';
 import Registrar from './pages/Registrar/Registrar';
 import Establishment from './pages/Establishment/Establishment';
 // import EstablishmentOffice from './pages/ExtablishmentOffice/ExtablishmentOffice';
