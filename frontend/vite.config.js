@@ -5,25 +5,18 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      '@': '/src', // Add source directory alias if needed
-      'react': 'react',
-      'react-dom': 'react-dom'
+      '@': '/src',
     }
   },
   build: {
+    sourcemap: true,
     rollupOptions: {
-      external: ['react', 'react-dom'],
       output: {
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
-        },
         manualChunks: {
-          'react-vendor': ['react', 'react-dom'],
+          vendor: ['react-bootstrap', 'react-router-dom', 'react-redux', '@reduxjs/toolkit'],
         }
-      },
-    },
-    sourcemap: true
+      }
+    }
   },
   server: {
     port: 3000,
