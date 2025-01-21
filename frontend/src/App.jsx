@@ -4,8 +4,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import HomeScreen from './screens/HomeScreen';
 import LoginScreen from './screens/LoginScreen';
-import registerScreen from './screens/registerScreen';
+import RegisterScreen from './screens/RegisterScreen';
 import ProfileScreen from './screens/ProfileScreen';
+
+
 import PrivateRoute from './components/PrivateRoute';
 import CollegeNameBanner from './components/CollegeNameBanner'
 import { Container } from 'react-bootstrap';
@@ -78,7 +80,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<HomeScreen />} />
             <Route path="/login" element={<LoginScreen />} />
-            <Route path="/register" element={<registerScreen />} />
+            <Route path="/register" element={< RegisterScreen/>} />
             <Route path="" element={<PrivateRoute />}>
               <Route path="/profile" element={<ProfileScreen />} />
             </Route>
@@ -151,6 +153,7 @@ const App = () => {
             <Route path="/community-social-development" element={<CommunitySocialDevelopment />} />
             <Route path="/peace-conflict-resolution" element={<PeaceConflictResolution />} />
             <Route path="/library-information-science" element={<LibraryInformationScience />} />
+            <Route path="/general-studies" element={<GeneralStudies />} />
            
 
 
