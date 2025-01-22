@@ -35,6 +35,7 @@ import Librarian from './pages/Librarian/Librarian';
 import Tetfund from './pages/Tetfund/Tetfund';
 import Nce from './pages/NCE/Nce';
 import Diploma from './pages/Diploma/Diploma';
+
 // import Provost from './pages/Provost/Provost';
 import Academics from './pages/Academics/Academics';
 import OpenRegistry from './pages/OpenRegistry/OpenRegistry';

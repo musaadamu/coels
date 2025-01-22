@@ -1,150 +1,196 @@
-// import React from 'react';
-// import { Container, Card, Button } from 'react-bootstrap';
-// import { LinkContainer } from 'react-router-bootstrap';
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-// import CarouselSection from './Carousol';  // Import the Carousel section
-// import CardSection from './Cards';          // Import the Card section
-
-// const Hero = () => {
-//   return (
-//     <div className='py-5 d-flex flex-column align-items-center'>
-//       <div className='d-flex w-100'>
-//         <Container className='d-flex flex-column align-items-start w-25'>
-//           <div>
-//             <Card className='p-4 d-flex flex-column align-items-center hero-card bg-light'>
-//               <LinkContainer to='/login'>
-//                 <Button variant='primary' className='mb-3 w-100'>
-//                   Sign In
-//                 </Button>
-//               </LinkContainer>
-//               <LinkContainer to='/register'>
-//                 <Button variant='secondary' className='w-100'>
-//                   Register
-//                 </Button>
-//               </LinkContainer>
-              
-//               {/* Image Section (Stacked Vertically) */}
-//               <div className='mt-4 d-flex flex-column align-items-center gap-3'>
-//                 <img 
-//                   src='/images/image11.jpg' 
-//                   alt='Promotion 1' 
-//                   className='img-fluid' 
-//                   style={{ maxHeight: '200px', objectFit: 'cover' }} 
-//                 />
-//                 <img 
-//                   src='/images/image15.jpg' 
-//                   alt='Promotion 2' 
-//                   className='img-fluid' 
-//                   style={{ maxHeight: '200px', objectFit: 'cover' }} 
-//                 />
-//               </div>
-//             </Card>
-//           </div>
-//         </Container>
-        
-//         {/* Carousel Section */}
-//         <CarouselSection />  
-//       </div>
-      
-//       {/* Card Section Below */}
-//       <CardSection />  
-//     </div>
-//   );
-// };
-
-// export default Hero;
-
 import React from 'react';
 import { Container, Card, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import CarouselSection from './Carousol';  // Import the Carousel section
-import CardSection from './Cards';          // Import the Card section
+import CarouselSection from './Carousol';
+import CardSection from './Cards';
 
 const Hero = () => {
-  return (
-    <div className='py-5 d-flex flex-column align-items-center'>
-      <div className='d-flex w-100'>
-        <Container className='d-flex flex-column align-items-start w-25'>
-          <div>
-            <Card className='p-4 d-flex flex-column align-items-center hero-card bg-light'>
-              {/* Button Section */}
-              <div className='w-100'>
-                <LinkContainer to='/login'>
-                  <Button variant='primary' className='mb-3 w-100'>
-                    Sign In
-                  </Button>
-                </LinkContainer>
-                <LinkContainer to='/register'>
-                  <Button variant='secondary' className='w-100'>
-                    Register
-                  </Button>
-                </LinkContainer>
-              </div>
-              
-              {/* Image Section (Stacked Vertically) */}
-              <div className='mt-4 d-flex flex-column align-items-center gap-3 w-100'>
-                <div className='d-flex flex-column flex-md-row justify-content-center gap-3 w-100'>
-                  <img 
-                    src='/images/image11.jpg' 
-                    alt='Promotion 1' 
-                    className='img-fluid' 
-                    style={{ maxHeight: '200px', objectFit: 'cover', width: '100%' }} 
-                  />
-                  <img 
-                    src='/images/image15.jpg' 
-                    alt='Promotion 2' 
-                    className='img-fluid' 
-                    style={{ maxHeight: '200px', objectFit: 'cover', width: '100%' }} 
-                  />
-                </div>
-                <div className='d-flex flex-column flex-md-row justify-content-center gap-3 w-100'>
-                  <img 
-                    src='/images/image11.jpg' 
-                    alt='Promotion 1' 
-                    className='img-fluid' 
-                    style={{ maxHeight: '200px', objectFit: 'cover', width: '100%' }} 
-                  />
-                  <img 
-                    src='/images/image15.jpg' 
-                    alt='Promotion 2' 
-                    className='img-fluid' 
-                    style={{ maxHeight: '200px', objectFit: 'cover', width: '100%' }} 
-                  />
-                </div>
+ return (
+   <div className='py-5'>
+     <div className='d-flex flex-column flex-lg-row w-100'>
+       <Container className='mb-4 mb-lg-0' style={{ width: '100%', maxWidth: '400px' }}>
+         <div>
+           <Card className='p-4 d-flex flex-column align-items-center hero-card bg-light'>
+             {/* Button Section */}
+             <div className='w-100'>
+               <LinkContainer to='/login'>
+                 <Button variant='primary' className='mb-3 w-100'>
+                   Sign In
+                 </Button>
+               </LinkContainer>
+               <LinkContainer to='/register'>
+                 <Button variant='secondary' className='w-100'>
+                   Register
+                 </Button>
+               </LinkContainer>
+             </div>
+             
+             {/* Image Grid Section */}
+             <div className='mt-4 w-100'>
+               {[1, 2, 3].map((row, index) => (
+                 <div 
+                   key={row} 
+                   className='d-flex flex-column flex-sm-row justify-content-center gap-3 w-100 mb-3'
+                 >
+                   <div className='w-100'>
+                     <img 
+                       src='/images/image11.jpg' 
+                       alt={`Promotion ${index * 2 + 1}`} 
+                       className='img-fluid rounded' 
+                       style={{ height: '200px', width: '100%', objectFit: 'cover' }} 
+                     />
+                   </div>
+                   <div className='w-100'>
+                     <img 
+                       src='/images/image15.jpg' 
+                       alt={`Promotion ${index * 2 + 2}`} 
+                       className='img-fluid rounded' 
+                       style={{ height: '200px', width: '100%', objectFit: 'cover' }} 
+                     />
+                   </div>
+                 </div>
+               ))}
+             </div>
+           </Card>
+         </div>
+       </Container>
+       
+       {/* Carousel Section */}
+       <div className='flex-grow-1 mb-4 mt-5' >
+         <CarouselSection />
+         {/* Redesigned Portal Buttons Section */}
+         <div className='d-flex flex-column gap-4 mt-4'>
+           {/* Admin Portals */}
+           <div className='d-flex flex-column flex-sm-row justify-content-center gap-3 mt-4' >
+             <a 
+               href="https://coelsnguru.safsrms.com" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               className='text-decoration-none'
+             >
+               <Button 
+                 variant="gradient" 
+                 className='px-4 py-3 fw-bold rounded-pill shadow-sm'
+                 style={{
+                   background: 'linear-gradient(45deg, #2193b0, #6dd5ed)',
+                   border: 'none',
+                   color: 'white',
+                   transition: 'transform 0.2s, shadow 0.2s',
+                   minWidth: '200px'
+                 }}
+                 onMouseOver={e => {
+                   e.currentTarget.style.transform = 'translateY(-2px)';
+                   e.currentTarget.style.boxShadow = '0 4px 15px rgba(33, 147, 176, 0.3)';
+                 }}
+                 onMouseOut={e => {
+                   e.currentTarget.style.transform = 'translateY(0)';
+                   e.currentTarget.style.boxShadow = '0 2px 5px rgba(0,0,0,0.1)';
+                 }}
+               >
+                 ADMIN NCE PORTAL
+               </Button>
+             </a>
+             <a 
+               href="https://coelsnguru_diploma.safsrms.com" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               className='text-decoration-none'
+             >
+               <Button 
+                 variant="gradient" 
+                 className='px-4 py-3 fw-bold rounded-pill shadow-sm'
+                 style={{
+                   background: 'linear-gradient(45deg, #FF512F, #F09819)',
+                   border: 'none',
+                   color: 'white',
+                   transition: 'transform 0.2s, shadow 0.2s',
+                   minWidth: '200px'
+                 }}
+                 onMouseOver={e => {
+                   e.currentTarget.style.transform = 'translateY(-2px)';
+                   e.currentTarget.style.boxShadow = '0 4px 15px rgba(255, 81, 47, 0.3)';
+                 }}
+                 onMouseOut={e => {
+                   e.currentTarget.style.transform = 'translateY(0)';
+                   e.currentTarget.style.boxShadow = '0 2px 5px rgba(0,0,0,0.1)';
+                 }}
+               >
+                 ADMIN DIPLOMA PORTAL
+               </Button>
+             </a>
+           </div>
 
-                <div className='d-flex flex-column flex-md-row justify-content-center gap-3 w-100'>
-                  <img 
-                    src='/images/image11.jpg' 
-                    alt='Promotion 1' 
-                    className='img-fluid' 
-                    style={{ maxHeight: '200px', objectFit: 'cover', width: '100%' }} 
-                  />
-                  <img 
-                    src='/images/image15.jpg' 
-                    alt='Promotion 2' 
-                    className='img-fluid' 
-                    style={{ maxHeight: '200px', objectFit: 'cover', width: '100%' }} 
-                  />
-                </div>
-
-                
-              </div>
-              
-            </Card>
-          </div>
-        </Container>
-        
-        {/* Carousel Section */}
-        <CarouselSection />  
-      </div>
-      
-      {/* Card Section Below */}
-      <CardSection />  
-    </div>
-  );
+           {/* Student Portals */}
+           <div className='d-flex flex-column flex-sm-row justify-content-center gap-3 mt-5'>
+             <a 
+               href="https://coelsnguru.safrecords.com" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               className='text-decoration-none'
+             >
+               <Button 
+                 variant="gradient" 
+                 className='px-4 py-3 fw-bold rounded-pill shadow-sm'
+                 style={{
+                   background: 'linear-gradient(45deg, #11998e, #38ef7d)',
+                   border: 'none',
+                   color: 'white',
+                   transition: 'transform 0.2s, shadow 0.2s',
+                   minWidth: '200px'
+                 }}
+                 onMouseOver={e => {
+                   e.currentTarget.style.transform = 'translateY(-2px)';
+                   e.currentTarget.style.boxShadow = '0 4px 15px rgba(17, 153, 142, 0.3)';
+                 }}
+                 onMouseOut={e => {
+                   e.currentTarget.style.transform = 'translateY(0)';
+                   e.currentTarget.style.boxShadow = '0 2px 5px rgba(0,0,0,0.1)';
+                 }}
+               >
+                 STUDENT NCE PORTAL
+               </Button>
+             </a>
+             <a 
+               href="https://coelsnguru_diploma.safrecords.com" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               className='text-decoration-none'
+             >
+               <Button 
+                 variant="gradient" 
+                 className='px-4 py-3 fw-bold rounded-pill shadow-sm'
+                 style={{
+                   background: 'linear-gradient(45deg, #8E2DE2, #4A00E0)',
+                   border: 'none',
+                   color: 'white',
+                   transition: 'transform 0.2s, shadow 0.2s',
+                   minWidth: '200px'
+                 }}
+                 onMouseOver={e => {
+                   e.currentTarget.style.transform = 'translateY(-2px)';
+                   e.currentTarget.style.boxShadow = '0 4px 15px rgba(142, 45, 226, 0.3)';
+                 }}
+                 onMouseOut={e => {
+                   e.currentTarget.style.transform = 'translateY(0)';
+                   e.currentTarget.style.boxShadow = '0 2px 5px rgba(0,0,0,0.1)';
+                 }}
+               >
+                 STUDENT DIPLOMA PORTAL
+               </Button>
+             </a>
+           </div>
+         </div>
+       </div>
+     </div>
+     
+     {/* Card Section Below */}
+     <div className='mt-4'>
+       <CardSection />
+     </div>
+   </div>
+ );
 };
 
 export default Hero;
