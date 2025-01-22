@@ -14,45 +14,56 @@ const Hero = () => {
          <div>
            <Card className='p-4 d-flex flex-column align-items-center hero-card bg-light'>
              {/* Button Section */}
-             <div className='w-100'>
-               <LinkContainer to='/login'>
-                 <Button variant='primary' className='mb-3 w-100'>
-                   Sign In
-                 </Button>
-               </LinkContainer>
-               <LinkContainer to='/register'>
-                 <Button variant='secondary' className='w-100'>
-                   Register
-                 </Button>
-               </LinkContainer>
-             </div>
-             
+                <div className='w-100 d-flex flex-column flex-sm-row gap-3'>
+                  <LinkContainer to='/login'>
+                    <Button variant='primary' className='w-100'>
+                      Sign In
+                    </Button>
+                  </LinkContainer>
+                  <LinkContainer to='/register'>
+                    <Button variant='secondary' className='w-100'>
+                      Register
+                    </Button>
+                  </LinkContainer>
+                </div>
              {/* Image Grid Section */}
-             <div className='mt-4 w-100'>
-               {[1, 2, 3].map((row, index) => (
-                 <div 
-                   key={row} 
-                   className='d-flex flex-column flex-sm-row justify-content-center gap-3 w-100 mb-3'
-                 >
-                   <div className='w-100'>
-                     <img 
-                       src='/images/image11.jpg' 
-                       alt={`Promotion ${index * 2 + 1}`} 
-                       className='img-fluid rounded' 
-                       style={{ height: '200px', width: '100%', objectFit: 'cover' }} 
-                     />
-                   </div>
-                   <div className='w-100'>
-                     <img 
-                       src='/images/image15.jpg' 
-                       alt={`Promotion ${index * 2 + 2}`} 
-                       className='img-fluid rounded' 
-                       style={{ height: '200px', width: '100%', objectFit: 'cover' }} 
-                     />
-                   </div>
-                 </div>
-               ))}
-             </div>
+                      <div className='mt-5 w-100 '>
+                      {/* Updated image addresses */}
+                      {[
+                        '/images/provost.jpg', 
+                        '/images/image16.jpg', 
+                        '/images/image14.jpg', 
+                        '/images/image27.jpg', 
+                        // '/images/image8.jpg', 
+                        // '/images/image27.jpg', 
+                        // '/images/image16.jpg', 
+                        // '/images/image7.jpg'
+                      ].reduce((acc, src, index) => {
+                        // Group images into pairs
+                        if (index % 2 === 0) {
+                          acc.push([src]); // Start a new pair
+                        } else {
+                          acc[acc.length - 1].push(src); // Add to the existing pair
+                        }
+                        return acc;
+                      }, []).map((pair, rowIndex) => (
+                        <div 
+                          key={rowIndex} 
+                          className='d-flex flex-column flex-sm-row justify-content-center mt-5 gap-3 w-100 mb-3'
+                        >
+                          {pair.map((src, colIndex) => (
+                            <div className='w-100' key={colIndex}>
+                              <img 
+                                src={src} 
+                                alt={`Promotion ${rowIndex * 2 + colIndex + 1}`} 
+                                className='img-fluid rounded' 
+                                style={{ height: '200px', width: '100%', objectFit: 'cover' }} 
+                              />
+                            </div>
+                          ))}
+                        </div>
+                      ))}
+                    </div>
            </Card>
          </div>
        </Container>

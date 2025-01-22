@@ -1,0 +1,13 @@
+.logo-container {
+    display: flex;
+    align-items: center;    /* Center the logo vertically */
+    height: 100%;           /* Ensure it takes full height of the header */
+    border: 2px solid #fff; /* White border */
+    border-radius: 8px;     /* Rounded corners */
+    padding: 5px;           /* Some padding around the logo */
+  }
+  
+  .logo {
+    height: auto;
+    width: 40px;            /* Adjust the width as needed */
+  }

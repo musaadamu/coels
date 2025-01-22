@@ -9,11 +9,30 @@
 }
 
 .carousel-caption h5 {
-    font-size: 1.5rem; /* Reasonable size for heading text */
+    font-size: 2rem; /* Default size for heading text */
     font-weight: bold; /* Bold font for the heading */
 }
 
 .carousel-caption p {
-    font-size: 1rem; /* Adjust paragraph text size */
+    font-size: 1.25rem; /* Default paragraph text size */
     margin-top: 5px; /* Add spacing between heading and paragraph */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .carousel-caption h5 {
+        font-size: 1.5rem; /* Smaller size for medium devices */
+    }
+    .carousel-caption p {
+        font-size: 1rem; /* Smaller size for medium devices */
+    }
+}
+
+@media (max-width: 576px) {
+    .carousel-caption h5 {
+        font-size: 1.2rem; /* Smaller size for small devices */
+    }
+    .carousel-caption p {
+        font-size: 0.9rem; /* Smaller size for small devices */
+    }
 }
