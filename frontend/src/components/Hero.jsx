@@ -30,7 +30,7 @@ const Hero = () => {
                       <div className='mt-5 w-100 '>
                       {/* Updated image addresses */}
                       {[
-                        '/images/provost.jpg', 
+                        '/images/image.jpg', 
                         '/images/image16.jpg', 
                         '/images/image14.jpg', 
                         '/images/image27.jpg', 
