@@ -27,7 +27,7 @@ app.use(notFound);
 app.use(errorHandler); // Move error handler after routes
 
 // MongoDB Connection
-mongoose.connect("mongodb://127.0.0.1:27017/coels", {
+mongoose.connect(process.env.MONGO_DB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
