@@ -91,7 +91,7 @@ const Carousel = () => {
               alt="Sign Board"
             />
             <div className="carousel-caption">
-              <h5>Administraive Bloc</h5>
+              <h5>Administrative Block</h5>
               <p>Administration for Excellence</p>
             </div>
           </div>
@@ -130,7 +130,7 @@ const Carousel = () => {
             />
             <div className="carousel-caption">
               <h5>Staff Offices</h5>
-              <p>Staff Offices</p>
+              <p>Lectures Offices</p>
             </div>
           </div>
           <div className="carousel-item">
@@ -153,8 +153,8 @@ const Carousel = () => {
               alt="Sign Board"
             />
             <div className="carousel-caption">
-              <h5>The Administratrative Block</h5>
-              <p>The Administration Center</p>
+              <h5>Administratrative Block</h5>
+              <p>Centre of Administration</p>
             </div>
           </div>
 

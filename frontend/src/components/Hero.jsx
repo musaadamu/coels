@@ -30,10 +30,10 @@ const Hero = () => {
              <div className='mt-5 w-100'>
   {/* Updated image addresses */}
                   {[
-                    { src: '/images/image7.jpg', name: 'The Provost' }, 
-                    { src: '/images/image16.jpg', name: 'The Registrar' }, 
-                    { src: '/images/image14.jpg', name: 'The Provost' }, 
-                    { src: '/images/image27.jpg', name: 'The Registrar' },
+                    { src: '/images/image7.jpg', name: 'Meet Our Provost' }, 
+                    { src: '/images/image16.jpg', name: 'Meet Our Registrar' }, 
+                    { src: '/images/image14.jpg', name: 'Leadership Per Excellence' }, 
+                    { src: '/images/image27.jpg', name: 'The Great Administrator' },
                   ].reduce((acc, { src, name }, index) => {
                     // Group images into pairs
                     if (index % 2 === 0) {
