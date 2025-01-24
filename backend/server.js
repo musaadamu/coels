@@ -17,11 +17,22 @@ const app = express();
 //   credentials: true
 // }));
 
+// app.use(cors({
+//     origin: [
+//       'https://https://coels-frontend.vercel.app/',
+//       'http://localhost:3000' // optional for local development
+//     ],
+//     credentials: true
+//  }));
+
 app.use(cors({
     origin: [
-      'https://https://coels-frontend.vercel.app/',
-      'http://localhost:3000' // optional for local development
+      'https://https://coels-frontend.vercel.app', // Your frontend URL
+      'https://https://coels-musa-adamus-projects.vercel.app/', // Your backend URL
+      'http://localhost:3000' // Optional for local development
     ],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
  }));
 

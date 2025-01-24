@@ -27,43 +27,40 @@ const Hero = () => {
                   </LinkContainer>
                 </div>
              {/* Image Grid Section */}
-                      <div className='mt-5 w-100 '>
-                      {/* Updated image addresses */}
-                      {[
-                        '/images/image7.jpg', 
-                        '/images/image16.jpg', 
-                        '/images/image14.jpg', 
-                        '/images/image27.jpg', 
-                        // '/images/image8.jpg', 
-                        // '/images/image27.jpg', 
-                        // '/images/image16.jpg', 
-                        // '/images/image7.jpg'
-                      ].reduce((acc, src, index) => {
-                        // Group images into pairs
-                        if (index % 2 === 0) {
-                          acc.push([src]); // Start a new pair
-                        } else {
-                          acc[acc.length - 1].push(src); // Add to the existing pair
-                        }
-                        return acc;
-                      }, []).map((pair, rowIndex) => (
-                        <div 
-                          key={rowIndex} 
-                          className='d-flex flex-column flex-sm-row justify-content-center mt-5 gap-3 w-100 mb-3'
-                        >
-                          {pair.map((src, colIndex) => (
-                            <div className='w-100' key={colIndex}>
-                              <img 
-                                src={src} 
-                                alt={`Promotion ${rowIndex * 2 + colIndex + 1}`} 
-                                className='img-fluid rounded' 
-                                style={{ height: '200px', width: '100%', objectFit: 'cover' }} 
-                              />
-                            </div>
-                          ))}
+             <div className='mt-5 w-100'>
+  {/* Updated image addresses */}
+                  {[
+                    { src: '/images/image7.jpg', name: 'The Provost' }, 
+                    { src: '/images/image16.jpg', name: 'The Registrar' }, 
+                    { src: '/images/image14.jpg', name: 'The Provost' }, 
+                    { src: '/images/image27.jpg', name: 'The Registrar' },
+                  ].reduce((acc, { src, name }, index) => {
+                    // Group images into pairs
+                    if (index % 2 === 0) {
+                      acc.push([{ src, name }]); // Start a new pair
+                    } else {
+                      acc[acc.length - 1].push({ src, name }); // Add to the existing pair
+                    }
+                    return acc;
+                  }, []).map((pair, rowIndex) => (
+                    <div 
+                      key={rowIndex} 
+                      className='d-flex flex-column flex-sm-row justify-content-center mt-5 gap-3 w-100 mb-3'
+                    >
+                      {pair.map(({ src, name }, colIndex) => (
+                        <div className='w-100' key={colIndex}>
+                          <img 
+                            src={src} 
+                            alt={`Promotion ${rowIndex * 2 + colIndex + 1}`} 
+                            className='img-fluid rounded' 
+                            style={{ height: '200px', width: '100%', objectFit: 'cover' }} 
+                          />
+                          <h5 className='text-center mt-2'>{name}</h5> {/* Display the name below the image */}
                         </div>
                       ))}
                     </div>
+                  ))}
+                </div>
            </Card>
          </div>
        </Container>
