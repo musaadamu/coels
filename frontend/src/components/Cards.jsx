@@ -4,25 +4,25 @@ import './Cards.css'; // Updated styles
 
 const cardData = [
   {
-    image: 'images/image1.jpg',
+    image: 'images/image23.jpg',
     title: "Nguru Town",
     text: "A historical hub known for its vibrant culture, trade, and hospitality. Nguru is the gateway to the Sahel.",
     link: "/nguru-town",
   },
   {
-    image: 'images/image2.jpg',
+    image: 'images/image25.jpg',
     title: "College History",
     text: "Established to foster academic excellence, the college stands as a beacon of education in Yobe State.",
     link: "/college-history",
   },
   {
-    image: 'images/image3.jpg',
+    image: 'images/image10.jpg',
     title: "Leadership",
     text: "Meet our Provost, a visionary leader dedicated to academic growth and innovation.",
     link: "/provost-profile",
   },
   {
-    image: 'images/image4.jpg',
+    image: 'images/image5.jpg',
     title: "Staff Spotlight",
     text: "Celebrating the dedication and expertise of our faculty and administrative staff.",
     link: "/staff-spotlight",

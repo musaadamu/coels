@@ -173,6 +173,7 @@ app.use(cors({
       'http://localhost:3000',
       'https://coels-frontend.vercel.app', 
       'https://coels-musa-adamus-projects.vercel.app'
+      
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
