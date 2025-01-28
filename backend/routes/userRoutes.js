@@ -1,16 +1,40 @@
-import express from 'express';
+// import express from 'express';
+// const router = express.Router();
+// import {authUser, registerUser, logoutUser, getUserProfile, updateUserProfile} from '../controllers/userController.js';
+// import {protect} from '../middleware/authMiddleware.js'
+
+// router.post('/auth', authUser);
+// router.post('/register', registerUser);
+// router.post('/login', logoutUser);
+// router.get('/profile', protect, getUserProfile);
+// router.put('/profile', protect, updateUserProfile);
+
+// // router.route('/profile')
+// // .get(protect, getUserProfile)
+// // .put(protect, updateUserProfile);
+
+// export default router;
+
+import express from "express";
 const router = express.Router();
-import {authUser, registerUser, logoutUser, getUserProfile, updateUserProfile} from '../controllers/userController.js';
-import {protect} from '../middleware/authMiddleware.js'
+import {
+  authUser,
+  registerUser,
+  logoutUser,
+  getUserProfile,
+  updateUserProfile,
+} from "../controllers/userController.js";
+import { protect } from "../middleware/authMiddleware.js";
 
-router.post('/auth', authUser);
-router.post('/register', registerUser);
-router.post('/login', logoutUser);
-router.get('/profile', protect, getUserProfile);
-router.put('/profile', protect, updateUserProfile);
+// Authentication routes
+router.post("/auth", authUser); // Authenticate user (login)
+router.post("/register", registerUser); // Register new user
+router.post("/logout", logoutUser); // Logout user
 
-// router.route('/profile')
-// .get(protect, getUserProfile)
-// .put(protect, updateUserProfile);
+// User profile routes
+router
+  .route("/profile")
+  .get(protect, getUserProfile) // Get user profile (protected)
+  .put(protect, updateUserProfile); // Update user profile (protected)
 
 export default router;
