@@ -20,13 +20,21 @@
 // });
 
 // Frontend configuration (appSlice.js)
+// apiSlice.js
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const baseUrl = process.env.NODE_ENV === 'production' 
   ? 'https://coels.vercel.app' 
   : 'http://localhost:5000';
 
-const baseQuery = fetchBaseQuery({ baseUrl });
+const baseQuery = fetchBaseQuery({ 
+    baseUrl,
+    credentials: 'include', // Important for handling cookies
+    prepareHeaders: (headers) => {
+        headers.set('Content-Type', 'application/json');
+        return headers;
+    }
+});
 
 export const apiSlice = createApi({
     baseQuery,
