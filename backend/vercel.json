@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "backend/server.cjs",
+      "src": "backend/server.js",
       "use": "@vercel/node",
       "config": {
         "includeFiles": ["backend/**"],
@@ -13,7 +13,7 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "backend/server.cjs",
+      "dest": "backend/server.js",
       "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
       "headers": {
         "Access-Control-Allow-Credentials": "true",
@@ -24,7 +24,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "backend/server.cjs"
+      "dest": "backend/server.js"
     }
   ],
   "env": {
