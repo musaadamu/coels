@@ -8,10 +8,25 @@
 //     endpoints: (builder) => ({})
 // });
 
+// import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+
+// // Set the base URL to your backend API
+// const baseQuery = fetchBaseQuery({ baseUrl: 'http://localhost:5000' })
+
+// export const apiSlice = createApi({
+//     baseQuery,
+//     tagTypes: ['User'],
+//     endpoints: (builder) => ({})
+// });
+
+// Frontend configuration (appSlice.js)
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-// Set the base URL to your backend API
-const baseQuery = fetchBaseQuery({ baseUrl: import.meta.env.REACT_APP_API_URL || 'https://coels-b7uynpbko-musa-adamus-projects.vercel.app/' })
+const baseUrl = process.env.NODE_ENV === 'production' 
+  ? 'https://coels.vercel.app' 
+  : 'http://localhost:5000';
+
+const baseQuery = fetchBaseQuery({ baseUrl });
 
 export const apiSlice = createApi({
     baseQuery,
