@@ -29,7 +29,7 @@ import { protect } from "../middleware/authMiddleware.js";
 // Authentication routes
 router.post("/auth", authUser); // Authenticate user (login)
 router.post("/register", registerUser); // Register new user
-router.post("/logout", logoutUser); // Logout user
+router.post("/login", logoutUser); // Logout user
 
 // User profile routes
 router
