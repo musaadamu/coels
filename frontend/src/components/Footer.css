@@ -1,0 +1,29 @@
+footer {
+  background-color: #704172; /* Dark blue */
+  color: #ecf0f1; /* Light gray */
+  padding: 20px 10px; /* Reduced padding */
+}
+
+h4 {
+  font-size: 1.2em; /* Reduced heading size */
+  margin-bottom: 10px; /* Reduced bottom margin */
+}
+
+p {
+  font-size: 0.9em; /* Reduced paragraph size */
+  margin-bottom: 5px; /* Reduced bottom margin */
+}
+
+.border-top {
+  margin-top: 15px; /* Reduced margin */
+  padding-top: 10px; /* Reduced padding */
+  border-color: #34495e; /* Slightly lighter border */
+}
+
+footer a {
+  color: #ecf0f1; /* Change link color for better visibility */
+}
+
+footer a:hover {
+  text-decoration: underline; /* Underline on hover for link visibility */
+}
