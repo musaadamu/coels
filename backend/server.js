@@ -1,366 +1,74 @@
 // import path from 'path';
-
 // import { fileURLToPath } from 'url';
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = path.dirname(__filename);
-
 // import express from 'express';
 // import cookieParser from 'cookie-parser';
 // import cors from 'cors';
 // import mongoose from 'mongoose';
 // import dotenv from 'dotenv';
 // import userRoutes from './routes/userRoutes.js';
+// import studentRoutes from './routes/studentRoutes.js';
 // import { notFound, errorHandler } from './middleware/errorMiddleware.js';
+// import { mkdirSync } from 'fs';
+// import helmet from 'helmet'; // Security middleware
+// import rateLimit from 'express-rate-limit'; // Rate limiting
 
 // dotenv.config();
 
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
+
 // const app = express();
 
-
+// // Middleware setup
+// app.use(helmet()); // Protects against well-known vulnerabilities
 // app.use(cors({
 //     origin: [
-//       'http://localhost:3000',
-//       'https://coels-frontend.vercel.app', 
-//       'https://coels-musa-adamus-projects.vercel.app'
+//         'http://localhost:3000',
+//         'https://coels-frontend.vercel.app',
+//         'https://coels-musa-adamus-projects.vercel.app',
 //     ],
 //     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
 //     allowedHeaders: ['Content-Type', 'Authorization'],
-//     credentials: true
+//     credentials: true,
 // }));
-
 
 // app.use(express.json());
 // app.use(express.urlencoded({ extended: true }));
 // app.use(cookieParser());
 
-// // Routes
-// app.use('/api/users', userRoutes);
-// app.use(notFound);
-// app.use(errorHandler); // Move error handler after routes
+// // Rate limiting
+// const limiter = rateLimit({
+//     windowMs: 15 * 60 * 1000, // 15 minutes
+//     max: 100 // Limit each IP to 100 requests per windowMs
+// });
+// app.use(limiter);
 
-// const connectDB = async () => {
+// // Static file serving
+// app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+// // Ensure uploads directory exists
+// const ensureUploadsDirectory = () => {
 //     try {
-//         await mongoose.connect(process.env.MONGO_DB_URL, {
-//             useNewUrlParser: true,
-//             useUnifiedTopology: true
-//         });
-//         console.log("Connected to DB");
+//         mkdirSync(path.join(__dirname, 'uploads'), { recursive: true });
 //     } catch (err) {
-//         console.error("DB Connection Error:", err);
-//         process.exit(1);
+//         console.log('Uploads directory already exists');
 //     }
 // };
 
-// // Add global error handlers
-// process.on('uncaughtException', (error) => {
-//     console.error('Uncaught Exception:', error);
-// });
-
-// process.on('unhandledRejection', (reason, promise) => {
-//     console.error('Unhandled Rejection at:', promise, 'reason:', reason);
-// });
-
-
-// // Serve static files in production
-// if (process.env.NODE_ENV === 'production') {
-//     const __dirname = path.resolve();
-//     app.use(express.static(path.join(__dirname, 'frontend/dist')));
-//     app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'frontend', 'dist', 'index.html')));
-// } else {
-//     app.get('/', (req, res) => res.send('Server is ready'));
-// }
-
-// // Start Server
-// const port = process.env.PORT || 5000;
-// app.listen(port, () => console.log(`Server started on port ${port}`));
-
-// import path from 'path';
-// import { fileURLToPath } from 'url';
-// import express from 'express';
-// import cookieParser from 'cookie-parser';
-// import cors from 'cors';
-// import mongoose from 'mongoose';
-// import dotenv from 'dotenv';
-// import userRoutes from './routes/userRoutes.js';
-// import { notFound, errorHandler } from './middleware/errorMiddleware.js';
-
-// dotenv.config();
-
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = path.dirname(__filename);
-
-// const app = express();
-
-// // Comprehensive error handling
-// process.on('uncaughtException', (error) => {
-//     console.error('Uncaught Exception:', error);
-// });
-
-// process.on('unhandledRejection', (reason, promise) => {
-//     console.error('Unhandled Rejection at:', promise, 'reason:', reason);
-// });
-
-// app.use(cors({
-//     origin: [
-//       'https://coels-frontend.vercel.app', 
-//       'https://coels-musa-adamus-projects.vercel.app', 
-//       'http://localhost:3000', // Add this line
-//       'localhost:3000'
-//     ],
-//     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-//     allowedHeaders: ['Content-Type', 'Authorization'],
-//     credentials: true
-// }));
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
-// app.use(cookieParser());
-
 // // Routes
 // app.use('/api/users', userRoutes);
+// app.use('/api', studentRoutes);
+
+// // Error handling middleware
 // app.use(notFound);
 // app.use(errorHandler);
 
-// // MongoDB Connection with more detailed error handling
+// // Database connection
 // const connectDB = async () => {
-//     try {
-//         await mongoose.connect(process.env.MONGO_DB_URL, {
-//             useNewUrlParser: true,
-//             useUnifiedTopology: true
-//         });
-//         console.log("Connected to DB");
-//     } catch (err) {
-//         console.error("DB Connection Error:", err);
+//     if (!process.env.MONGO_DB_URL) {
+//         console.error("MONGO_DB_URL environment variable is missing.");
 //         process.exit(1);
 //     }
-// };
-
-// // Serve static files in production
-// if (process.env.NODE_ENV === 'production') {
-//     app.use(express.static(path.join(__dirname, 'frontend/dist')));
-//     app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'frontend', 'dist', 'index.html')));
-// } else {
-//     app.get('/', (req, res) => res.send('Server is ready'));
-// }
-
-// // Start Server
-// const port = process.env.PORT || 5000;
-// connectDB().then(() => {
-//     app.listen(port, () => console.log(`Server started on port ${port}`));
-// }).catch(err => {
-//     console.error("Server start failed:", err);
-// });
-
-
-// import path from 'path';
-// import { fileURLToPath } from 'url';
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = path.dirname(__filename);
-
-// import express from 'express';
-// import cookieParser from 'cookie-parser';
-// import cors from 'cors';
-// import mongoose from 'mongoose';
-// import dotenv from 'dotenv';
-// import userRoutes from './routes/userRoutes.js';
-// import { notFound, errorHandler } from './middleware/errorMiddleware.js';
-
-// dotenv.config();
-
-// const app = express();
-
-// app.use(cors({
-//     origin: [
-//       'http://localhost:3000',
-//       'https://coels-frontend.vercel.app', 
-//       'https://coels-musa-adamus-projects.vercel.app'
-      
-//     ],
-//     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-//     allowedHeaders: ['Content-Type', 'Authorization'],
-//     credentials: true
-// }));
-
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
-// app.use(cookieParser());
-
-// // Routes
-// app.use('/api/users', userRoutes);
-// app.use(notFound);
-// app.use(errorHandler);
-
-// // Database Connection
-// const connectDB = async () => {
-//     try {
-//         await mongoose.connect(process.env.MONGO_DB_URL, {
-//             useNewUrlParser: true,
-//             useUnifiedTopology: true
-//         });
-//         console.log("Connected to DB");
-//     } catch (err) {
-//         console.error("DB Connection Error:", err);
-//         process.exit(1);
-//     }
-// };
-
-// // Global Error Handlers
-// process.on('uncaughtException', (error) => {
-//     console.error('Uncaught Exception:', error);
-// });
-
-// process.on('unhandledRejection', (reason, promise) => {
-//     console.error('Unhandled Rejection at:', promise, 'reason:', reason);
-// });
-
-// // Serve static files in production
-// if (process.env.NODE_ENV === 'production') {
-//     app.use(express.static(path.join(__dirname, 'frontend/dist')));
-//     app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'frontend', 'dist', 'index.html')));
-// } else {
-//     app.get('/', (req, res) => res.send('Server is ready'));
-// }
-
-// // Start Server
-// const port = process.env.PORT || 5000;
-// connectDB().then(() => {
-//     app.listen(port, () => console.log(`Server started on port ${port}`));
-// }).catch(err => {
-//     console.error("Server start failed:", err);
-// });
-
-import path from 'path';
-import { fileURLToPath } from 'url';
-import express from 'express';
-import cookieParser from 'cookie-parser';
-import cors from 'cors';
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
-import userRoutes from './routes/userRoutes.js';
-import { notFound, errorHandler } from './middleware/errorMiddleware.js';
-
-dotenv.config();
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const app = express();
-
-// CORS configuration
-app.use(cors({
-    origin: [
-        'http://localhost:3000',
-        'https://coels-frontend.vercel.app',
-        'https://coels-musa-adamus-projects.vercel.app',
-    ],
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true,
-}));
-
-// Middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
-
-// Routes
-app.use('/api/users', userRoutes);
-app.use(notFound);
-app.use(errorHandler); // Place error handler middleware after routes
-
-// Database Connection
-const connectDB = async () => {
-    try {
-        await mongoose.connect(process.env.MONGO_DB_URL, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        });
-        console.log("Connected to DB");
-    } catch (err) {
-        console.error("DB Connection Error:", err);
-        process.exit(1);
-    }
-};
-
-// Global Error Handlers
-process.on('uncaughtException', (error) => {
-    console.error('Uncaught Exception:', error);
-});
-
-process.on('unhandledRejection', (reason, promise) => {
-    console.error('Unhandled Rejection at:', promise, 'reason:', reason);
-});
-
-// Serve static files in production
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, 'frontend/dist')));
-    app.get('*', (req, res) =>
-        res.sendFile(path.resolve(__dirname, 'frontend', 'dist', 'index.html'))
-    );
-} else {
-    app.get('/', (req, res) => res.send('Server is ready'));
-}
-
-// Start Server
-const port = process.env.PORT || 5000;
-connectDB()
-    .then(() => {
-        app.listen(port, () => console.log(`Server started on port ${port}`));
-    })
-    .catch((err) => {
-        console.error("Server start failed:", err);
-    });
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const path = require("path");
-// const express = require("express");
-// const cookieParser = require("cookie-parser");
-// const cors = require("cors");
-// const mongoose = require("mongoose");
-// const dotenv = require("dotenv");
-// const userRoutes = require("./routes/userRoutes.js");
-// const { notFound, errorHandler } = require("./middleware/errorMiddleware.js");
-
-// dotenv.config();
-
-// const app = express();
-
-// // CORS configuration
-// app.use(
-//     cors({
-//         origin: [
-//             "http://localhost:3000",
-//             "https://coels-frontend.vercel.app",
-//             "https://coels-musa-adamus-projects.vercel.app",
-//         ],
-//         methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-//         allowedHeaders: ["Content-Type", "Authorization"],
-//         credentials: true,
-//     })
-// );
-
-// // Middleware
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
-// app.use(cookieParser());
-
-// // Routes
-// app.use("/api/users", userRoutes);
-// app.use(notFound);
-// app.use(errorHandler); // Place error handler middleware after routes
-
-// // Database Connection
-// const connectDB = async () => {
 //     try {
 //         await mongoose.connect(process.env.MONGO_DB_URL, {
 //             useNewUrlParser: true,
@@ -373,31 +81,219 @@ connectDB()
 //     }
 // };
 
-// // Global Error Handlers
-// process.on("uncaughtException", (error) => {
-//     console.error("Uncaught Exception:", error);
-// });
-
-// process.on("unhandledRejection", (reason, promise) => {
-//     console.error("Unhandled Rejection at:", promise, "reason:", reason);
-// });
-
-// // Serve static files in production
-// if (process.env.NODE_ENV === "production") {
-//     app.use(express.static(path.join(__dirname, "frontend", "dist")));
-//     app.get("*", (req, res) =>
-//         res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"))
-//     );
-// } else {
-//     app.get("/", (req, res) => res.send("Server is ready"));
-// }
-
-// // Start Server
-// const port = process.env.PORT || 5000;
-// connectDB()
-//     .then(() => {
-//         app.listen(port, () => console.log(`Server started on port ${port}`));
-//     })
-//     .catch((err) => {
-//         console.error("Server start failed:", err);
+// // Start server
+// const startServer = async () => {
+//     const port = process.env.PORT || 5000;
+//     await connectDB();
+//     app.listen(port, () => {
+//         console.log(`Server started on port ${port}`);
+//         console.log(`Environment: ${process.env.NODE_ENV}`);
 //     });
+// };
+
+// // Initialize application
+// ensureUploadsDirectory();
+// startServer().catch(err => {
+//     console.error("Server start failed:", err);
+//     process.exit(1);
+// });
+
+// server.js
+// import path from 'path';
+// import { fileURLToPath } from 'url';
+// import express from 'express';
+// import cookieParser from 'cookie-parser';
+// import cors from 'cors';
+// import mongoose from 'mongoose';
+// import dotenv from 'dotenv';
+// import userRoutes from './routes/userRoutes.js';
+// import studentRoutes from './routes/studentRoutes.js';
+// import accommodationRoutes from './routes/accommodationRoutes.js'; // Import accommodation routes
+// import { notFound, errorHandler } from './middleware/errorMiddleware.js';
+// import { mkdirSync } from 'fs';
+// import helmet from 'helmet';
+// import rateLimit from 'express-rate-limit';
+
+// dotenv.config();
+
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
+
+// const app = express();
+
+// // Middleware setup
+// app.use(helmet());
+// app.use(cors({
+//     origin: ['http://localhost:3000', 'https://coels-frontend.vercel.app', 'https://coels-musa-adamus-projects.vercel.app'],
+//     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+//     allowedHeaders: ['Content-Type', 'Authorization'],
+//     credentials: true,
+// }));
+
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
+// app.use(cookieParser());
+
+// // Rate limiting
+// const limiter = rateLimit({
+//     windowMs: 15 * 60 * 1000,
+//     max: 100
+// });
+// app.use(limiter);
+
+// // Static file serving
+// app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+// // Ensure uploads directory exists
+// const ensureUploadsDirectory = () => {
+//     try {
+//         mkdirSync(path.join(__dirname, 'uploads'), { recursive: true });
+//     } catch (err) {
+//         console.log('Uploads directory already exists');
+//     }
+// };
+
+// // Routes
+// app.use('/api/users', userRoutes);
+// app.use('/api', studentRoutes);
+// app.use('/api', accommodationRoutes); // Add accommodation routes
+
+// // Error handling middleware
+// app.use(notFound);
+// app.use(errorHandler);
+
+// // Database connection
+// const connectDB = async () => {
+//     if (!process.env.MONGO_DB_URL) {
+//         console.error("MONGO_DB_URL environment variable is missing.");
+//         process.exit(1);
+//     }
+//     try {
+//         await mongoose.connect(process.env.MONGO_DB_URL, {
+//             useNewUrlParser: true,
+//             useUnifiedTopology: true,
+//         });
+//         console.log("Connected to DB");
+//     } catch (err) {
+//         console.error("DB Connection Error:", err);
+//         process.exit(1);
+//     }
+// };
+
+// // Start server
+// const startServer = async () => {
+//     const port = process.env.PORT || 5000;
+//     await connectDB();
+//     app.listen(port, () => {
+//         console.log(`Server started on port ${port}`);
+//         console.log(`Environment: ${process.env.NODE_ENV}`);
+//     });
+// };
+
+// // Initialize application
+// ensureUploadsDirectory();
+// startServer().catch(err => {
+//     console.error("Server start failed:", err);
+//     process.exit(1);
+// });
+
+// server.js
+import path from 'path';
+import { fileURLToPath } from 'url';
+import express from 'express';
+import cookieParser from 'cookie-parser';
+import cors from 'cors';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+import userRoutes from './routes/userRoutes.js';
+import studentRoutes from './routes/studentRoutes.js';
+import accommodationRoutes from './routes/accommodationRoutes.js';
+import resultsRoutes from './routes/resultsRoutes.js'; // Import results routes
+import { notFound, errorHandler } from './middleware/errorMiddleware.js';
+import { mkdirSync } from 'fs';
+import helmet from 'helmet';
+import rateLimit from 'express-rate-limit';
+
+dotenv.config();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const app = express();
+
+// Middleware setup
+app.use(helmet());
+app.use(cors({
+    origin: ['http://localhost:3000', 'https://coels-frontend.vercel.app', 'https://coels-musa-adamus-projects.vercel.app'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
+}));
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+
+// Rate limiting
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 100
+});
+app.use(limiter);
+
+// Static file serving
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+// Ensure uploads directory exists
+const ensureUploadsDirectory = () => {
+    try {
+        mkdirSync(path.join(__dirname, 'uploads'), { recursive: true });
+    } catch (err) {
+        console.log('Uploads directory already exists');
+    }
+};
+
+// Routes
+app.use('/api/users', userRoutes);
+app.use('/api', studentRoutes);
+app.use('/api', accommodationRoutes);
+app.use('/api', resultsRoutes); // Add results routes
+
+// Error handling middleware
+app.use(notFound);
+app.use(errorHandler);
+
+// Database connection
+const connectDB = async () => {
+    if (!process.env.MONGO_DB_URL) {
+        console.error("MONGO_DB_URL environment variable is missing.");
+        process.exit(1);
+    }
+    try {
+        await mongoose.connect(process.env.MONGO_DB_URL, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
+        console.log("Connected to DB");
+    } catch (err) {
+        console.error("DB Connection Error:", err);
+        process.exit(1);
+    }
+};
+
+// Start server
+const startServer = async () => {
+    const port = process.env.PORT || 5000;
+    await connectDB();
+    app.listen(port, () => {
+        console.log(`Server started on port ${port}`);
+        console.log(`Environment: ${process.env.NODE_ENV}`);
+    });
+};
+
+// Initialize application
+ensureUploadsDirectory();
+startServer().catch(err => {
+    console.error("Server start failed:", err);
+    process.exit(1);
+});
