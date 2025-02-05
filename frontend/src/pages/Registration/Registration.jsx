@@ -569,7 +569,7 @@ const baseUrl = process.env.NODE_ENV === 'production'
           });
 
           try {
-              const response = await fetch(`${baseUrl}/api/students`, {
+              const response = await fetch(`${baseUrl}/api/accommodation`, {
                   method: 'POST',
                   body: formDataToSend,
                   credentials: 'include',
