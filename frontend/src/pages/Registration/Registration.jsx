@@ -1239,7 +1239,7 @@ export default function Registration() {
     });
 
     try {
-      const response = await fetch(`${baseUrl}/api/accommodation`, {
+      const response = await fetch(`${baseUrl}/api/student`, {
         method: 'POST',
         body: formDataToSend,
         credentials: 'include',
