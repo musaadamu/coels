@@ -93,14 +93,42 @@ const Header = () => {
     "TETFund Interventions: Advancing standard legal and teacher education."
   ];
 
-  // Quick Links dropdown options
-  const quickLinks = [
-    { label: "Staff Portal", to: "/staff" },
-    { label: "Student Portal", to: "/students" },
-    { label: "Online Registration", to: "/registration" },
-    { label: "School Fee Payment", to: "/payment" },
-    { label: "Hostel Accommodation", to: "/accommodation" },
-    { label: "Academic Results", to: "/results" }
+  // Quick Links dropdown — grouped destinations for fast access
+  const quickLinkGroups = [
+    {
+      group: "Admissions",
+      items: [
+        { label: "Apply for Admission", to: "/admission-office" },
+        { label: "NCE Programmes",      to: "/nce" },
+        { label: "Diploma Programmes",  to: "/diploma" }
+      ]
+    },
+    {
+      group: "Student Services",
+      items: [
+        { label: "Online Registration",   to: "/registration" },
+        { label: "School Fees Payment",   to: "/payment" },
+        { label: "Hostel Accommodation",  to: "/accommodation" },
+        { label: "Examination Results",   to: "/results" }
+      ]
+    },
+    {
+      group: "Offices",
+      items: [
+        { label: "Provost's Office",    to: "/provost" },
+        { label: "Registrar's Office",  to: "/registrar" },
+        { label: "Student Affairs",     to: "/student-affairs" }
+      ]
+    },
+    {
+      group: "Portals",
+      items: portalLinks.map(p => ({
+        label: p.label,
+        to: p.href,
+        external: true,
+        accent: p.accent
+      }))
+    }
   ];
 
   const handleSearchSubmit = (e) => {
@@ -460,12 +488,34 @@ const Header = () => {
               </button>
               {quickLinksOpen && (
                 <ul className="quick-links-menu">
-                  {quickLinks.map((item, idx) => (
-                    <li key={idx} className="quick-link-item">
-                      <Link to={item.to} onClick={() => setQuickLinksOpen(false)}>
-                        {item.label}
-                      </Link>
-                    </li>
+                  {quickLinkGroups.map((grp, gIdx) => (
+                    <React.Fragment key={`grp-${gIdx}`}>
+                      {gIdx > 0 && <li className="quick-links-menu-divider" aria-hidden="true"></li>}
+                      <li className="quick-links-group-label">{grp.group}</li>
+                      {grp.items.map((item, iIdx) => (
+                        <li key={`q-${gIdx}-${iIdx}`} className="quick-link-item">
+                          {item.external ? (
+                            <a
+                              href={item.to}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="quick-link-external"
+                              onClick={() => setQuickLinksOpen(false)}
+                            >
+                              {item.accent && (
+                                <span className="portal-accent-dot" style={{ background: item.accent }} aria-hidden="true"></span>
+                              )}
+                              <span>{item.label}</span>
+                              <span className="external-icon" aria-hidden="true">↗</span>
+                            </a>
+                          ) : (
+                            <Link to={item.to} onClick={() => setQuickLinksOpen(false)}>
+                              {item.label}
+                            </Link>
+                          )}
+                        </li>
+                      ))}
+                    </React.Fragment>
                   ))}
                 </ul>
               )}

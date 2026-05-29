@@ -326,13 +326,31 @@
   background: #ffffff;
   color: #1e293b;
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
-  border-radius: 6px;
+  border-radius: 8px;
   padding: 0.5rem 0;
-  width: 220px;
+  width: 260px;
+  max-height: min(80vh, 520px);
+  overflow-y: auto;
   list-style: none;
   margin: 0;
   z-index: 1100;
   border-top: 3px solid #10b981;
+}
+
+.quick-links-group-label {
+  padding: 10px 14px 4px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.quick-links-menu-divider {
+  height: 1px;
+  background: #e2e8f0;
+  margin: 6px 12px;
+  list-style: none;
 }
 
 .quick-link-item a {
@@ -348,6 +366,31 @@
 .quick-link-item a:hover {
   background-color: #f1f5f9;
   color: #1d4ed8;
+}
+
+/* External (portal) entries inside Quick Links */
+.quick-link-item .quick-link-external {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quick-link-item .quick-link-external .portal-accent-dot {
+  width: 9px;
+  height: 9px;
+}
+
+.quick-link-item .quick-link-external .external-icon {
+  margin-left: auto;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #94a3b8;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.quick-link-item .quick-link-external:hover .external-icon {
+  color: #10b981;
+  transform: translate(2px, -2px);
 }
 
 /* Main Navbar Scrolled compacting */
