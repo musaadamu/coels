@@ -10,7 +10,7 @@ const cardData = [
     link: "/nguru-town",
   },
   {
-    image: 'images/image25.jpg',
+    image: 'images/image2.jpg',
     title: "College History",
     text: "Established to foster academic excellence, the college stands as a beacon of education in Yobe State.",
     link: "/college-history",
@@ -22,7 +22,7 @@ const cardData = [
     link: "/provost-profile",
   },
   {
-    image: 'images/image5.jpg',
+    image: 'images/image11.jpg',
     title: "Staff Spotlight",
     text: "Celebrating the dedication and expertise of our faculty and administrative staff.",
     link: "/staff-spotlight",

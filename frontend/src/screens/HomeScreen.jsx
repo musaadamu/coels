@@ -10,6 +10,7 @@ const HomeScreen = () => {
       {/* <Carousol />
       <Cards />
       <Footer /> */}
+      <Cards />
     </>
   )
 }
