@@ -2,16 +2,15 @@ import React from 'react';
 import { Container, Card } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import CarouselSection from './Carousol';
 import CardSection from './Cards';
-import DownloadsSection from './DownloadsSection';
 
 const Hero = () => {
  return (
-   <div className='py-4'>
-     <div className='d-flex flex-column flex-lg-row w-100'>
-       <Container className='mb-4 mb-lg-0' style={{ width: '100%', maxWidth: '400px' }}>
-         <div>
+   <div>
+     {/* Leadership Cards Section */}
+     <div className='py-4 px-3' style={{ background: 'linear-gradient(180deg, #ffffff 0%, #f8fafc 100%)' }}>
+       <Container style={{ maxWidth: '600px' }}>
+         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
            <Card className='p-4 d-flex flex-column align-items-center hero-card bg-light'>
              {/* Leadership Section - Provost (Featured) above Registrar */}
              <div className='w-100 d-flex flex-column gap-4'>
@@ -136,18 +135,10 @@ const Hero = () => {
            </Card>
          </div>
        </Container>
-       
-       {/* Carousel Section */}
-       <div className='flex-grow-1 mb-4 mt-5' >
-         <CarouselSection />
-       </div>
      </div>
 
      {/* Portal Access Section - full-width, between hero and explore cards */}
      <PortalAccess />
-
-     {/* Downloads Section */}
-     <DownloadsSection />
 
      {/* Card Section Below */}
      <div className='mt-4'>
