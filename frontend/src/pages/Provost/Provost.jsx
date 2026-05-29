@@ -6,7 +6,7 @@ export default function Provost() {
     <div className="provost-page-container">
       <header className="provost-header">
         <h1>Office of the Provost</h1>
-        <h2>Mohammed Kachallah</h2>
+        <h2>Professor Ali Usman Manzo</h2>
         <p>College of Education and Legal Studies, Nguru</p>
       </header>
 
