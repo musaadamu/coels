@@ -1,45 +1,157 @@
-.carousel-caption {
-    position: absolute;
-    bottom: 20px; /* Adjust as necessary */
-    left: 15%; /* Center the text */
-    right: 15%; /* Center the text */
-    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
-    color: #fff; /* White text color */
-    padding: 10px 20px; /* Add padding around the text */
-    border-radius: 5px; /* Rounded corners for better aesthetics */
-    max-width: 80%; /* Limit the caption width for readability */
-    margin: 0 auto; /* Center align the caption */
-    text-align: center; /* Center the text */
+/* ===== Hero Carousel — fixed-frame, premium ===== */
+.hero-carousel-wrapper {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 12px;
 }
 
-.carousel-caption h5 {
-    font-size: 2rem; /* Default size for heading text */
-    font-weight: bold; /* Bold font for the heading */
+.hero-carousel {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+  box-shadow:
+    0 14px 40px rgba(15, 32, 39, 0.22),
+    0 2px 6px rgba(15, 32, 39, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.carousel-caption p {
-    font-size: 1.25rem; /* Default paragraph text size */
-    margin-top: 5px; /* Add spacing between heading and paragraph */
+/* Fixed aspect-ratio frame — eliminates layout shift between slides */
+.hero-carousel-inner {
+  width: 100%;
+  aspect-ratio: 16 / 9;
 }
 
-/* Responsive styles */
+.hero-carousel-inner .carousel-item {
+  height: 100%;
+  transition: opacity 0.9s ease-in-out;
+}
+
+.hero-slide-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+  overflow: hidden;
+}
+
+.hero-slide-img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  transform: scale(1);
+  transition: transform 7s ease-out;
+}
+
+/* Subtle Ken-Burns on the active slide */
+.carousel-item.active .hero-slide-img {
+  transform: scale(1.06);
+}
+
+/* Soft inner vignette for cinematic depth */
+.hero-slide-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, 0.35) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.25) 100%);
+}
+
+/* ===== Indicators (animated pills) ===== */
+.hero-carousel-indicators {
+  margin: 0 0 18px;
+  z-index: 3;
+}
+
+.hero-carousel-indicators [data-bs-target] {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.55);
+  opacity: 1;
+  margin: 0 5px;
+  transition: width 0.35s ease, background 0.35s ease, transform 0.35s ease;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+.hero-carousel-indicators [data-bs-target]:hover {
+  background: rgba(255, 255, 255, 0.85);
+  transform: scale(1.1);
+}
+
+.hero-carousel-indicators .active {
+  width: 32px;
+  border-radius: 6px;
+  background: linear-gradient(45deg, #2193b0, #6dd5ed);
+  transform: none;
+}
+
+/* ===== Controls (gradient circular buttons, fade-in on hover) ===== */
+.hero-carousel-control {
+  width: 56px;
+  height: 56px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(15, 32, 39, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease, background 0.3s ease, transform 0.3s ease;
+  z-index: 3;
+}
+
+.hero-carousel-control.carousel-control-prev { left: 18px; }
+.hero-carousel-control.carousel-control-next { right: 18px; }
+
+.hero-carousel:hover .hero-carousel-control,
+.hero-carousel:focus-within .hero-carousel-control {
+  opacity: 1;
+}
+
+.hero-carousel-control:hover {
+  background: linear-gradient(45deg, #2193b0, #6dd5ed);
+  transform: translateY(-50%) scale(1.08);
+  box-shadow: 0 6px 18px rgba(33, 147, 176, 0.45);
+}
+
+.hero-carousel-arrow {
+  color: #ffffff;
+  font-size: 2rem;
+  line-height: 1;
+  font-weight: 300;
+}
+
+/* Hide Bootstrap's default icons so our custom arrows show */
+.hero-carousel-control .carousel-control-prev-icon,
+.hero-carousel-control .carousel-control-next-icon {
+  display: none;
+}
+
+/* ===== Responsive ===== */
 @media (max-width: 768px) {
-    .carousel-caption h5 {
-        font-size: 1.5rem; /* Smaller size for medium devices */
-    }
-    .carousel-caption p {
-        font-size: 1rem; /* Smaller size for medium devices */
-    }
+  .hero-carousel { border-radius: 14px; }
+  .hero-carousel-control {
+    width: 42px;
+    height: 42px;
+    opacity: 1;
+  }
+  .hero-carousel-control.carousel-control-prev { left: 10px; }
+  .hero-carousel-control.carousel-control-next { right: 10px; }
+  .hero-carousel-arrow { font-size: 1.5rem; }
+  .hero-carousel-indicators { margin-bottom: 12px; }
+  .hero-carousel-indicators .active { width: 24px; }
 }
 
-@media (max-width: 576px) {
-    .carousel-caption {
-        display: none; /* Hides the captions on small devices */
-    }
-    .carousel-caption h5 {
-        font-size: 1.2rem; /* Smaller size for small devices */
-    }
-    .carousel-caption p {
-        font-size: 0.9rem; /* Smaller size for small devices */
-    }
+@media (max-width: 480px) {
+  .hero-carousel-inner { aspect-ratio: 4 / 3; }
 }

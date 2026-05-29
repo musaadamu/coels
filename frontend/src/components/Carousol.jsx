@@ -1,186 +1,79 @@
 import React from 'react';
 import './Carousol.css';
 
+const slides = [
+  { src: 'images/image10.jpg', alt: 'The Provost' },
+  { src: 'images/image9.jpg',  alt: 'College Leadership' },
+  { src: 'images/image1.jpg',  alt: 'Campus Sign Board' },
+  { src: 'images/image17.jpg', alt: 'Campus View' },
+  { src: 'images/image5.jpg',  alt: 'Academic Activities' },
+  { src: 'images/image18.jpg', alt: 'College Facility' },
+  { src: 'images/image19.jpg', alt: 'Student Life' },
+  { src: 'images/image25.jpg', alt: 'College Grounds' },
+  { src: 'images/image24.jpg', alt: 'College Programs' },
+  { src: 'images/image22.jpg', alt: 'Faculty Excellence' },
+  { src: 'images/image23.jpg', alt: 'College Community' },
+];
+
+const CAROUSEL_ID = 'heroCarousel';
+
 const Carousel = () => {
   return (
-    <div className="w-75 mx-auto">
+    <div className="hero-carousel-wrapper">
       <div
-        id="carouselExampleFade"
-        className="carousel slide carousel-fade"
+        id={CAROUSEL_ID}
+        className="carousel slide carousel-fade hero-carousel"
         data-bs-ride="carousel"
-        data-bs-interval="3000"
+        data-bs-interval="4000"
+        data-bs-pause="hover"
       >
-        <div className="carousel-inner">
-          {/* Slide 1 */}
-          <div className="carousel-item active">
-            <img
-              src="images/image10.jpg"
-              className="d-block w-100 carousel-img"
-              alt="The Provost"
+        {/* Indicators */}
+        <div className="carousel-indicators hero-carousel-indicators">
+          {slides.map((_, i) => (
+            <button
+              key={`ind-${i}`}
+              type="button"
+              data-bs-target={`#${CAROUSEL_ID}`}
+              data-bs-slide-to={i}
+              className={i === 0 ? 'active' : ''}
+              aria-current={i === 0 ? 'true' : undefined}
+              aria-label={`Slide ${i + 1}`}
             />
-            
-          </div>
-
-          <div className="carousel-item active">
-            <img
-              src="images/image9.jpg"
-              className="d-block w-100 carousel-img"
-              alt="The Provost"
-            />
-            
-          </div>
-          <div className="carousel-item active">
-            <img
-              src="images/image10.jpg"
-              className="d-block w-100 carousel-img"
-              alt="The Provost"
-            />
-            
-          </div>
-
-          {/* Slide 2 */}
-          <div className="carousel-item">
-            <img
-              src="images/image1.jpg"
-              className="d-block w-100 carousel-img"
-              alt="Sign Board"
-            />
-            
-          </div>
-
-          <div className="carousel-item active">
-            <img
-              src="images/image9.jpg"
-              className="d-block w-100 carousel-img"
-              alt="The Provost"
-            />
-            
-          </div>
-
-          <div className="carousel-item">
-            <img
-              src="images/image17.jpg"
-              className="d-block w-100 carousel-img"
-              alt="Sign Board"
-            />
-            
-          </div>
-          <div className="carousel-item">
-            <img
-              src="images/image5.jpg"
-              className="d-block w-100 carousel-img"
-              alt="Sign Board"
-            />
-            
-          </div>
-  
-
-
-          <div className="carousel-item">
-            <img
-              src="images/image18.jpg"
-              className="d-block w-100 carousel-img"
-              alt="Sign Board"
-            />
-            
-          </div>
-
-          <div className="carousel-item">
-            <img
-              src="images/image19.jpg"
-              className="d-block w-100 carousel-img"
-              alt="Sign Board"
-            />
-            
-          </div>
-
-          <div className="carousel-item">
-            <img
-              src="images/image17.jpg"
-              className="d-block w-100 carousel-img"
-              alt="Sign Board"
-            />
-            
-          </div>
-          <div className="carousel-item">
-            <img
-              src="images/image25.jpg"
-              className="d-block w-100 carousel-img"
-              alt="Sign Board"
-            />
-            
-          </div>
-
-          <div className="carousel-item">
-            <img
-              src="images/image24.jpg"
-              className="d-block w-100 carousel-img"
-              alt="Sign Board"
-            />
-            
-          </div>
-
-
-          <div className="carousel-item">
-            <img
-              src="images/image10.jpg"
-              className="d-block w-100 carousel-img"
-              alt="Sign Board"
-            />
-            
-          </div>
-
-          <div className="carousel-item">
-            <img
-              src="images/image22.jpg"
-              className="d-block w-100 carousel-img"
-              alt="Sign Board"
-            />
-            
-          </div>
-
-          <div className="carousel-item">
-            <img
-              src="images/image23.jpg"
-              className="d-block w-100 carousel-img"
-              alt="Sign Board"
-            />
-            
-          </div>
-
-          <div className="carousel-item">
-            <img
-              src="images/image9.jpg"
-              className="d-block w-100 carousel-img"
-              alt="Sign Board"
-            />
-            
-          </div>
-
-
-          {/* Additional Slides */}
-          {/* Slide 3 to Slide 11 go here... */}
-          {/* Copy the structure of Slide 1 and Slide 2 for the remaining slides */}
-
+          ))}
         </div>
 
-        {/* Carousel controls */}
+        {/* Slides */}
+        <div className="carousel-inner hero-carousel-inner">
+          {slides.map((s, i) => (
+            <div
+              key={`slide-${i}`}
+              className={`carousel-item${i === 0 ? ' active' : ''}`}
+            >
+              <div className="hero-slide-frame">
+                <img src={s.src} alt={s.alt} className="hero-slide-img" />
+                <div className="hero-slide-vignette" aria-hidden="true" />
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Controls */}
         <button
-          className="carousel-control-prev"
+          className="carousel-control-prev hero-carousel-control"
           type="button"
-          data-bs-target="#carouselExampleFade"
+          data-bs-target={`#${CAROUSEL_ID}`}
           data-bs-slide="prev"
         >
-          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span className="hero-carousel-arrow" aria-hidden="true">&#8249;</span>
           <span className="visually-hidden">Previous</span>
         </button>
         <button
-          className="carousel-control-next"
+          className="carousel-control-next hero-carousel-control"
           type="button"
-          data-bs-target="#carouselExampleFade"
+          data-bs-target={`#${CAROUSEL_ID}`}
           data-bs-slide="next"
         >
-          <span className="carousel-control-next-icon" aria-hidden="true"></span>
+          <span className="hero-carousel-arrow" aria-hidden="true">&#8250;</span>
           <span className="visually-hidden">Next</span>
         </button>
       </div>
