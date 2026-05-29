@@ -1,0 +1,256 @@
+/* ===== Academic Calendar Section ===== */
+.academic-calendar-section {
+  padding: 64px 16px;
+  background: linear-gradient(
+    180deg,
+    rgba(248, 250, 252, 0.96) 0%,
+    #ffffff 50%,
+    rgba(248, 250, 252, 0.96) 100%
+  );
+  border-top: 1px solid rgba(15, 32, 39, 0.06);
+}
+
+.academic-calendar-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* ===== Header ===== */
+.calendar-header {
+  text-align: center;
+  margin-bottom: 44px;
+}
+
+.calendar-eyebrow {
+  display: inline-block;
+  background: linear-gradient(45deg, #2193b0, #6dd5ed);
+  color: #ffffff;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(33, 147, 176, 0.35);
+}
+
+.calendar-title {
+  font-size: clamp(1.85rem, 3.6vw, 2.7rem);
+  font-weight: 800;
+  color: #0f2027;
+  line-height: 1.18;
+  margin: 0 0 12px;
+}
+
+.calendar-accent {
+  background: linear-gradient(45deg, #2193b0, #6dd5ed);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.calendar-subtitle {
+  font-size: 1.02rem;
+  color: #64748b;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* ===== Download Area ===== */
+.calendar-download-area {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.download-calendar-btn {
+  background: linear-gradient(45deg, #2193b0, #6dd5ed);
+  color: #ffffff;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 24px rgba(33, 147, 176, 0.3);
+  letter-spacing: 0.5px;
+}
+
+.download-calendar-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(33, 147, 176, 0.4);
+}
+
+.download-calendar-btn:active {
+  transform: translateY(-1px);
+}
+
+.btn-icon {
+  font-size: 1.2rem;
+}
+
+.btn-text {
+  font-weight: 700;
+}
+
+.calendar-note {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+/* ===== Timeline ===== */
+.calendar-timeline {
+  position: relative;
+  margin: 32px 0 48px;
+  padding: 0;
+}
+
+.calendar-timeline::before {
+  content: '';
+  position: absolute;
+  left: 31px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, #2193b0 0%, #6dd5ed 50%, #2193b0 100%);
+}
+
+.timeline-item {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.timeline-marker {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(33, 147, 176, 0.2);
+  border: 3px solid #ffffff;
+  position: relative;
+  z-index: 2;
+}
+
+.timeline-content {
+  flex-grow: 1;
+  padding: 18px 20px;
+  background: #ffffff;
+  border: 1px solid rgba(15, 32, 39, 0.06);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-content {
+  background: rgba(248, 250, 252, 0.98);
+  border-color: rgba(33, 147, 176, 0.15);
+  box-shadow: 0 6px 16px rgba(33, 147, 176, 0.1);
+}
+
+.timeline-date {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.timeline-event {
+  font-size: 1.05rem;
+  color: #0f2027;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+/* ===== Info Box ===== */
+.calendar-info-box {
+  background: linear-gradient(135deg, rgba(33, 147, 176, 0.08) 0%, rgba(99, 102, 241, 0.05) 100%);
+  border: 1px solid rgba(33, 147, 176, 0.15);
+  border-radius: 14px;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .calendar-info-box {
+    grid-template-columns: 1fr;
+  }
+}
+
+.info-box-item {
+  display: flex;
+  gap: 14px;
+}
+
+.info-box-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.info-box-item p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #475569;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .academic-calendar-section {
+    padding: 48px 12px;
+  }
+
+  .calendar-timeline::before {
+    left: 23px;
+  }
+
+  .timeline-marker {
+    width: 52px;
+    height: 52px;
+    font-size: 22px;
+  }
+
+  .timeline-item {
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .timeline-content {
+    padding: 14px 16px;
+  }
+
+  .timeline-event {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .calendar-download-area {
+    margin-bottom: 36px;
+  }
+
+  .download-calendar-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 24px;
+    font-size: 0.95rem;
+  }
+
+  .calendar-title {
+    font-size: 1.65rem;
+  }
+}
