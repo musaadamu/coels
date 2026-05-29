@@ -1,1210 +1,11 @@
-// import React from 'react';
-// import { FaSignInAlt, FaSignOutAlt } from 'react-icons/fa';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { useNavigate, Link } from 'react-router-dom';
-// import { useLogoutMutation } from '../slices/userApiSlice';
-// import { logout } from '../slices/authSlice';
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-// import './Header.css'; // Import custom CSS for styles
-
-// const Header = () => {
-//   const { userInfo } = useSelector((state) => state.auth);
-//   const dispatch = useDispatch();
-//   const navigate = useNavigate();
-//   const [logoutApiCall] = useLogoutMutation();
-
-//   const logoutHandler = async () => {
-//     try {
-//       await logoutApiCall().unwrap();
-//       dispatch(logout());
-//       navigate('/');
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   };
-
-//   return (
-//     <header>
-//       <div className="bg-dark py-3">
-//         <div className="container-fluid d-flex align-items-center justify-content-between flex-wrap">
-//           <div className="logo-container">
-//             <img
-//               src="images/logo.JPG"
-//               alt="The College Logo"
-//               className="logo" // Use CSS class for logo styling
-//             />
-//           </div>
-//           <div className="d-flex flex-wrap justify-content-center gap-3 w-100 mt-2 mt-md-0">
-//             <Link className="nav-link text-light" to="/" style={{ fontSize: '1.3rem' }}>Home</Link>
-//             <Link className="nav-link text-light" to="/provost" style={{ fontSize: '1.3rem' }}>Provost</Link>
-//             <Link className="nav-link text-light" to="/registrar" style={{ fontSize: '1.3rem' }}>Registrar</Link>
-//             <Link className="nav-link text-light" to="/librarian" style={{ fontSize: '1.3rem' }}>Librarian</Link>
-//             <Link className="nav-link text-light" to="/tetfund" style={{ fontSize: '1.3rem' }}>TETFUND</Link>
-
-//             <div className="dropdown">
-//               <button
-//                 className="dropdown-toggle nav-link text-light border-0 bg-transparent"
-//                 type="button"
-//                 data-bs-toggle="dropdown"
-//                 aria-expanded="false"
-//                 style={{ fontSize: '1.3rem' }}
-//               >
-//                 Registrar's Office
-//               </button>
-//               <ul className="dropdown-menu">
-//                 <li><Link className="dropdown-item" to="/exams-records">Exams and Records</Link></li>
-//                 <li><Link className="dropdown-item" to="/establishment-office">Establishment</Link></li>
-//                 <li><Link className="dropdown-item" to="/admission-office">Admissions</Link></li>
-//                 <li><Link className="dropdown-item" to="/student-affairs">Student Affairs</Link></li>
-//                 <li><Link className="dropdown-item" to="/open-registry">Open Registry</Link></li>
-//               </ul>
-//             </div>
-
-//             <div className="dropdown">
-//               <button
-//                 className="dropdown-toggle nav-link text-light border-0 bg-transparent"
-//                 type="button"
-//                 data-bs-toggle="dropdown"
-//                 aria-expanded="false"
-//                 style={{ fontSize: '1.3rem' }}
-//               >
-//                 Schools
-//               </button>
-//               <ul className="dropdown-menu">
-//                 <li><Link className="dropdown-item" to="/dean-school-of-science">The Dean School of Science</Link></li>
-//                 <li><Link className="dropdown-item" to="/dean-school-of-languages">The Dean School of Languages</Link></li>
-//                 <li><Link className="dropdown-item" to="/dean-school-of-law">The Dean School of Law</Link></li>
-//                 <li><Link className="dropdown-item" to="/education">The Dean School of Education</Link></li>
-//                 <li><Link className="dropdown-item" to="/early-child">The Dean School of Early Child Care Education</Link></li>
-//                 <li><Link className="dropdown-item" to="/school-of-arts">The Dean School of Arts Social and Management Sciences</Link></li>
-//                 <li><Link className="dropdown-item" to="/school-of-vocational">The Dean School of Vocational and Technical Education</Link></li>
-//                 <li><Link className="dropdown-item" to="/centre-for-social-and-management-science">The Dean Centre for Social and Management Sciences</Link></li>
-//                 <li><Link className="dropdown-item" to="/general-studies">The Dean General Studies</Link></li>
-//               </ul>
-//             </div>
-
-//             <div className="dropdown">
-//               <button
-//                 className="dropdown-toggle nav-link text-light border-0 bg-transparent"
-//                 type="button"
-//                 data-bs-toggle="dropdown"
-//                 aria-expanded="false"
-//                 style={{ fontSize: '1.3rem' }}
-//               >
-//                 Our Portals
-//               </button>
-//               <ul className="dropdown-menu">
-//                 <li><Link className="dropdown-item" to="/staff">Staff</Link></li>
-//                 <li><Link className="dropdown-item" to="/students">Students</Link></li>
-//               </ul>
-//             </div>
-
-//             <div className="dropdown">
-//               <button
-//                 className="dropdown-toggle nav-link text-light border-0 bg-transparent"
-//                 type="button"
-//                 data-bs-toggle="dropdown"
-//                 aria-expanded="false"
-//                 style={{ fontSize: '1.3rem' }}
-//               >
-//                 Departments
-//               </button>
-//               <ul className="dropdown-menu">
-//                 <li><Link className="dropdown-item" to="/department-computer-science">Department of Computer Science</Link></li>
-//                 <li><Link className="dropdown-item" to="/department-mathematics">Departments of Mathematics</Link></li>
-//                 <li><Link className="dropdown-item" to="/department-english">Department of English</Link></li>
-//                 <li><Link className="dropdown-item" to="/department-hausa">Department of Hausa</Link></li>
-//                 <li><Link className="dropdown-item" to="/integrated-science">Department of Integrated Science</Link></li>
-//                 <li><Link className="dropdown-item" to="/arabic">Department of Arabic</Link></li>
-//                 <li><Link className="dropdown-item" to="/islamic-studies">Department of Islamic Studies</Link></li>
-//                 <li><Link className="dropdown-item" to="/economics">Department of Economics</Link></li>
-//                 <li><Link className="dropdown-item" to="/social-studies">Department of Social Studies</Link></li>
-//                 <li><Link className="dropdown-item" to="/civil-law">Department of Civil Law</Link></li>
-//                 <li><Link className="dropdown-item" to="/sharia-civil-law">Department of Sharia and Civil Law</Link></li>
-//                 <li><Link className="dropdown-item" to="/home-management">Department of Home Management</Link></li>
-//                 <li><Link className="dropdown-item" to="/department-education">Department of Education</Link></li>
-//                 <li><Link className="dropdown-item" to="/primary-education">Department of Primary Education</Link></li>
-//                 <li><Link className="dropdown-item" to="/business-education">Department of Business Education</Link></li>
-//                 <li><Link className="dropdown-item" to="/public-admin">Department of Public Admin</Link></li>
-//                 <li><Link className="dropdown-item" to="/quranic-science">Department of Qur'anic Science</Link></li>
-//                 <li><Link className="dropdown-item" to="/community-social-development">Department of Community and Social Development</Link></li>
-//                 <li><Link className="dropdown-item" to="/peace-conflict-resolution">Department of Peace and Conflict Resolution</Link></li>
-//                 <li><Link className="dropdown-item" to="/library-information-science">Department of Library and Information Science</Link></li>
-//               </ul>
-//             </div>
-
-//             <div className="dropdown">
-//               <button
-//                 className="dropdown-toggle nav-link text-light border-0 bg-transparent"
-//                 type="button"
-//                 data-bs-toggle="dropdown"
-//                 aria-expanded="false"
-//                 style={{ fontSize: '1.3rem' }}
-//               >
-//                 Programmes
-//               </button>
-//               <ul className="dropdown-menu">
-//                 <li><Link className="dropdown-item" to="/diploma">Diploma</Link></li>
-//                 <li><Link className="dropdown-item" to="/nce">NCE</Link></li>
-//               </ul>
-//             </div>
-
-//             <div className="dropdown">
-//               <button
-//                 className="dropdown-toggle nav-link text-light border-0 bg-transparent"
-//                 type="button"
-//                 data-bs-toggle="dropdown"
-//                 aria-expanded="false"
-//                 style={{ fontSize: '1.3rem' }}
-//               >
-//                 Students
-//               </button>
-//               <ul className="dropdown-menu">
-//                 <li><Link className="dropdown-item" to="/registration">Registration</Link></li>
-//                 <li><Link className="dropdown-item" to="/payment">Payments</Link></li>
-//                 <li><Link className="dropdown-item" to="/accommodation">Accommodations</Link></li>
-//                 <li><Link className="dropdown-item" to="/results">Results</Link></li>
-//               </ul>
-//             </div>
-//           </div>
-
-//           <div className="d-flex gap-3">
-//             {userInfo ? (
-//               <div className="dropdown">
-//                 <button
-//                   className="dropdown-toggle nav-link text-light border-0 bg-transparent"
-//                   type="button"
-//                   data-bs-toggle="dropdown"
-//                   aria-expanded="false"
-//                 >
-//                   {userInfo.name}
-//                 </button>
-//                 <ul className="dropdown-menu">
-//                   <li>
-//                     <Link className="dropdown-item" to="/profile">Profile</Link>
-//                   </li>
-//                   <li>
-//                     <button className="dropdown-item" onClick={logoutHandler}>Logout</button>
-//                   </li>
-//                 </ul>
-//               </div>
-//             ) : (
-//               <>
-//                 <Link className="nav-link text-light" to="/login">
-//                   <FaSignInAlt /> Sign In
-//                 </Link>
-//                 <Link className="nav-link text-light" to="/register">
-//                   <FaSignOutAlt /> Sign Up
-//                 </Link>
-//               </>
-//             )}
-//           </div>
-//         </div>
-//       </div>
-//     </header>
-//   );
-// };
-
-// export default Header;
-
-// import React from 'react';
-// import { FaSignInAlt, FaSignOutAlt } from 'react-icons/fa';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { useNavigate, Link, useLocation } from 'react-router-dom';
-// import { useLogoutMutation } from '../slices/userApiSlice';
-// import { logout } from '../slices/authSlice';
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-// import './Header.css';
-
-// const Header = () => {
-//   const { userInfo } = useSelector((state) => state.auth);
-//   const dispatch = useDispatch();
-//   const navigate = useNavigate();
-//   const location = useLocation();
-//   const [logoutApiCall] = useLogoutMutation();
-
-//   const logoutHandler = async () => {
-//     try {
-//       await logoutApiCall().unwrap();
-//       dispatch(logout());
-//       navigate('/');
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   };
-
-//   const isActive = (path) => {
-//     return location.pathname === path ? 'active-nav-link' : '';
-//   };
-
-//   return (
-//     <header>
-//       <div className="bg-dark py-3">
-//         <div className="container-fluid d-flex align-items-center justify-content-between flex-wrap">
-//           <div className="logo-container">
-//             <img
-//               src="images/logo.JPG"
-//               alt="The College Logo"
-//               className="logo"
-//             />
-//           </div>
-//           <div className="d-flex flex-wrap justify-content-center gap-3 w-100 mt-2 mt-md-0">
-//             <Link className={`nav-link text-light ${isActive('/')}`} to="/" style={{ fontSize: '1.3rem' }}>Home</Link>
-//             <Link className={`nav-link text-light ${isActive('/provost')}`} to="/provost" style={{ fontSize: '1.3rem' }}>Provost</Link>
-//             <Link className={`nav-link text-light ${isActive('/registrar')}`} to="/registrar" style={{ fontSize: '1.3rem' }}>Registrar</Link>
-//             <Link className={`nav-link text-light ${isActive('/librarian')}`} to="/librarian" style={{ fontSize: '1.3rem' }}>Librarian</Link>
-//             <Link className={`nav-link text-light ${isActive('/tetfund')}`} to="/tetfund" style={{ fontSize: '1.3rem' }}>TETFUND</Link>
-
-//             <div className="dropdown">
-//               <button
-//                 className={`dropdown-toggle nav-link text-light border-0 bg-transparent ${location.pathname.includes('/registrar') ? 'active-nav-link' : ''}`}
-//                 type="button"
-//                 data-bs-toggle="dropdown"
-//                 aria-expanded="false"
-//                 style={{ fontSize: '1.3rem' }}
-//               >
-//                 Registrar's Office
-//               </button>
-//               <ul className="dropdown-menu">
-//                 <li><Link className={`dropdown-item ${isActive('/exams-records')}`} to="/exams-records">Exams and Records</Link></li>
-//                 <li><Link className={`dropdown-item ${isActive('/establishment-office')}`} to="/establishment-office">Establishment</Link></li>
-//                 <li><Link className={`dropdown-item ${isActive('/admission-office')}`} to="/admission-office">Admissions</Link></li>
-//                 <li><Link className={`dropdown-item ${isActive('/student-affairs')}`} to="/student-affairs">Student Affairs</Link></li>
-//                 <li><Link className={`dropdown-item ${isActive('/open-registry')}`} to="/open-registry">Open Registry</Link></li>
-//               </ul>
-//             </div>
-
-//             <div className="dropdown">
-//               <button
-//                 className={`dropdown-toggle nav-link text-light border-0 bg-transparent ${location.pathname.includes('/dean-') || location.pathname.includes('/school-') ? 'active-nav-link' : ''}`}
-//                 type="button"
-//                 data-bs-toggle="dropdown"
-//                 aria-expanded="false"
-//                 style={{ fontSize: '1.3rem' }}
-//               >
-//                 Schools
-//               </button>
-//               <ul className="dropdown-menu">
-//                 <li><Link className={`dropdown-item ${isActive('/dean-school-of-science')}`} to="/dean-school-of-science">The Dean School of Science</Link></li>
-//                 <li><Link className={`dropdown-item ${isActive('/dean-school-of-languages')}`} to="/dean-school-of-languages">The Dean School of Languages</Link></li>
-//                 <li><Link className={`dropdown-item ${isActive('/dean-school-of-law')}`} to="/dean-school-of-law">The Dean School of Law</Link></li>
-//                 <li><Link className={`dropdown-item ${isActive('/education')}`} to="/education">The Dean School of Education</Link></li>
-//                 <li><Link className={`dropdown-item ${isActive('/early-child')}`} to="/early-child">The Dean School of Early Child Care Education</Link></li>
-//                 <li><Link className={`dropdown-item ${isActive('/school-of-arts')}`} to="/school-of-arts">The Dean School of Arts Social and Management Sciences</Link></li>
-//                 <li><Link className={`dropdown-item ${isActive('/school-of-vocational')}`} to="/school-of-vocational">The Dean School of Vocational and Technical Education</Link></li>
-//                 <li><Link className={`dropdown-item ${isActive('/centre-for-social-and-management-science')}`} to="/centre-for-social-and-management-science">The Dean Centre for Social and Management Sciences</Link></li>
-//                 <li><Link className={`dropdown-item ${isActive('/general-studies')}`} to="/general-studies">The Dean General Studies</Link></li>
-//               </ul>
-//             </div>
-
-//             <div className="dropdown">
-//               <button
-//                 className={`dropdown-toggle nav-link text-light border-0 bg-transparent ${location.pathname === '/staff' || location.pathname === '/students' ? 'active-nav-link' : ''}`}
-//                 type="button"
-//                 data-bs-toggle="dropdown"
-//                 aria-expanded="false"
-//                 style={{ fontSize: '1.3rem' }}
-//               >
-//                 Our Portals
-//               </button>
-//               <ul className="dropdown-menu">
-//                 <li><Link className={`dropdown-item ${isActive('/staff')}`} to="/staff">Staff</Link></li>
-//                 <li><Link className={`dropdown-item ${isActive('/students')}`} to="/students">Students</Link></li>
-//               </ul>
-//             </div>
-
-//             <div className="dropdown">
-//               <button
-//                 className={`dropdown-toggle nav-link text-light border-0 bg-transparent ${location.pathname.includes('department-') ? 'active-nav-link' : ''}`}
-//                 type="button"
-//                 data-bs-toggle="dropdown"
-//                 aria-expanded="false"
-//                 style={{ fontSize: '1.3rem' }}
-//               >
-//                 Departments
-//               </button>
-//               <ul className="dropdown-menu">
-//                 <li><Link className={`dropdown-item ${isActive('/department-computer-science')}`} to="/department-computer-science">Department of Computer Science</Link></li>
-//                 <li><Link className={`dropdown-item ${isActive('/department-mathematics')}`} to="/department-mathematics">Departments of Mathematics</Link></li>
-//                 <li><Link className={`dropdown-item ${isActive('/department-english')}`} to="/department-english">Department of English</Link></li>
-//                 <li><Link className={`dropdown-item ${isActive('/department-hausa')}`} to="/department-hausa">Department of Hausa</Link></li>
-//                 <li><Link className={`dropdown-item ${isActive('/integrated-science')}`} to="/integrated-science">Department of Integrated Science</Link></li>
-//                 <li><Link className={`dropdown-item ${isActive('/arabic')}`} to="/arabic">Department of Arabic</Link></li>
-//                 <li><Link className={`dropdown-item ${isActive('/islamic-studies')}`} to="/islamic-studies">Department of Islamic Studies</Link></li>
-//                 <li><Link className={`dropdown-item ${isActive('/economics')}`} to="/economics">Department of Economics</Link></li>
-//                 <li><Link className={`dropdown-item ${isActive('/social-studies')}`} to="/social-studies">Department of Social Studies</Link></li>
-//                 <li><Link className={`dropdown-item ${isActive('/civil-law')}`} to="/civil-law">Department of Civil Law</Link></li>
-//                 <li><Link className={`dropdown-item ${isActive('/sharia-civil-law')}`} to="/sharia-civil-law">Department of Sharia and Civil Law</Link></li>
-//                 <li><Link className={`dropdown-item ${isActive('/home-management')}`} to="/home-management">Department of Home Management</Link></li>
-//                 <li><Link className={`dropdown-item ${isActive('/department-education')}`} to="/department-education">Department of Education</Link></li>
-//                 <li><Link className={`dropdown-item ${isActive('/primary-education')}`} to="/primary-education">Department of Primary Education</Link></li>
-//                 <li><Link className={`dropdown-item ${isActive('/business-education')}`} to="/business-education">Department of Business Education</Link></li>
-//                 <li><Link className={`dropdown-item ${isActive('/public-admin')}`} to="/public-admin">Department of Public Admin</Link></li>
-//                 <li><Link className={`dropdown-item ${isActive('/quranic-science')}`} to="/quranic-science">Department of Qur'anic Science</Link></li>
-//                 <li><Link className={`dropdown-item ${isActive('/community-social-development')}`} to="/community-social-development">Department of Community and Social Development</Link></li>
-//                 <li><Link className={`dropdown-item ${isActive('/peace-conflict-resolution')}`} to="/peace-conflict-resolution">Department of Peace and Conflict Resolution</Link></li>
-//                 <li><Link className={`dropdown-item ${isActive('/library-information-science')}`} to="/library-information-science">Department of Library and Information Science</Link></li>
-//               </ul>
-//             </div>
-
-//             <div className="dropdown">
-//               <button
-//                 className={`dropdown-toggle nav-link text-light border-0 bg-transparent ${location.pathname === '/diploma' || location.pathname === '/nce' ? 'active-nav-link' : ''}`}
-//                 type="button"
-//                 data-bs-toggle="dropdown"
-//                 aria-expanded="false"
-//                 style={{ fontSize: '1.3rem' }}
-//               >
-//                 Programmes
-//               </button>
-//               <ul className="dropdown-menu">
-//                 <li><Link className={`dropdown-item ${isActive('/diploma')}`} to="/diploma">Diploma</Link></li>
-//                 <li><Link className={`dropdown-item ${isActive('/nce')}`} to="/nce">NCE</Link></li>
-//               </ul>
-//             </div>
-
-//             <div className="dropdown">
-//               <button
-//                 className={`dropdown-toggle nav-link text-light border-0 bg-transparent ${location.pathname.includes('/registration') || location.pathname.includes('/payment') || location.pathname.includes('/accommodation') || location.pathname.includes('/results') ? 'active-nav-link' : ''}`}
-//                 type="button"
-//                 data-bs-toggle="dropdown"
-//                 aria-expanded="false"
-//                 style={{ fontSize: '1.3rem' }}
-//               >
-//                 Students
-//               </button>
-//               <ul className="dropdown-menu">
-//                 <li><Link className={`dropdown-item ${isActive('/registration')}`} to="/registration">Registration</Link></li>
-//                 <li><Link className={`dropdown-item ${isActive('/payment')}`} to="/payment">Payments</Link></li>
-//                 <li><Link className={`dropdown-item ${isActive('/accommodation')}`} to="/accommodation">Accommodations</Link></li>
-//                 <li><Link className={`dropdown-item ${isActive('/results')}`} to="/results">Results</Link></li>
-//               </ul>
-//             </div>
-//           </div>
-
-//           <div className="d-flex gap-3">
-//             {userInfo ? (
-//               <div className="dropdown">
-//                 <button
-//                   className="dropdown-toggle nav-link text-light border-0 bg-transparent"
-//                   type="button"
-//                   data-bs-toggle="dropdown"
-//                   aria-expanded="false"
-//                 >
-//                   {userInfo.name}
-//                 </button>
-//                 <ul className="dropdown-menu">
-//                   <li>
-//                     <Link className={`dropdown-item ${isActive('/profile')}`} to="/profile">Profile</Link>
-//                   </li>
-//                   <li>
-//                     <button className="dropdown-item" onClick={logoutHandler}>Logout</button>
-//                   </li>
-//                 </ul>
-//               </div>
-//             ) : (
-//               <>
-//                 <Link className={`nav-link text-light ${isActive('/login')}`} to="/login">
-//                   <FaSignInAlt /> Sign In
-//                 </Link>
-//                 <Link className={`nav-link text-light ${isActive('/register')}`} to="/register">
-//                   <FaSignOutAlt /> Sign Up
-//                 </Link>
-//               </>
-//             )}
-//           </div>
-//         </div>
-//       </div>
-//     </header>
-//   );
-// };
-
-// export default Header;
-
-// import React from 'react';
-// import { FaSignInAlt, FaSignOutAlt } from 'react-icons/fa';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { useNavigate, Link, useLocation } from 'react-router-dom';
-// import { useLogoutMutation } from '../slices/userApiSlice';
-// import { logout } from '../slices/authSlice';
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-// import './Header.css';
-
-// const Header = () => {
-//   const { userInfo } = useSelector((state) => state.auth);
-//   const dispatch = useDispatch();
-//   const navigate = useNavigate();
-//   const location = useLocation();
-//   const [logoutApiCall] = useLogoutMutation();
-
-//   const logoutHandler = async () => {
-//     try {
-//       await logoutApiCall().unwrap();
-//       dispatch(logout());
-//       navigate('/');
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   };
-
-//   const isActive = (path) => {
-//     return location.pathname === path ? 'active-nav-link' : '';
-//   };
-
-//   return (
-//     <header className="bg-dark">
-//       <nav className="navbar navbar-expand-lg navbar-dark">
-//         <div className="container-fluid">
-//           <div className="logo-container">
-//             <img src="images/logo.JPG" alt="The College Logo" className="logo" />
-//           </div>
-          
-//           <button 
-//             className="navbar-toggler" 
-//             type="button" 
-//             data-bs-toggle="collapse" 
-//             data-bs-target="#navbarContent"
-//             aria-controls="navbarContent" 
-//             aria-expanded="false" 
-//             aria-label="Toggle navigation"
-//           >
-//             <span className="navbar-toggler-icon"></span>
-//           </button>
-
-//           <div className="collapse navbar-collapse" id="navbarContent">
-//             <div className="nav-container">
-//               <Link className={`nav-link text-light ${isActive('/')}`} to="/">Home</Link>
-//               <Link className={`nav-link text-light ${isActive('/provost')}`} to="/provost">Provost</Link>
-//               <Link className={`nav-link text-light ${isActive('/registrar')}`} to="/registrar">Registrar</Link>
-//               <Link className={`nav-link text-light ${isActive('/librarian')}`} to="/librarian">Librarian</Link>
-//               <Link className={`nav-link text-light ${isActive('/tetfund')}`} to="/tetfund">TETFUND</Link>
-
-//               {/* Your existing dropdown menus */}
-//               <div className="nav-item dropdown">
-//                 <button
-//                   className={`dropdown-toggle nav-link text-light border-0 bg-transparent ${location.pathname.includes('/registrar') ? 'active-nav-link' : ''}`}
-//                   type="button"
-//                   data-bs-toggle="dropdown"
-//                   aria-expanded="false"
-//                 >
-//                   Registrar's Office
-//                 </button>
-//                 <ul className="dropdown-menu">
-//                   <li><Link className={`dropdown-item ${isActive('/exams-records')}`} to="/exams-records">Exams and Records</Link></li>
-//                   <li><Link className={`dropdown-item ${isActive('/establishment-office')}`} to="/establishment-office">Establishment</Link></li>
-//                   <li><Link className={`dropdown-item ${isActive('/admission-office')}`} to="/admission-office">Admissions</Link></li>
-//                   <li><Link className={`dropdown-item ${isActive('/student-affairs')}`} to="/student-affairs">Student Affairs</Link></li>
-//                   <li><Link className={`dropdown-item ${isActive('/open-registry')}`} to="/open-registry">Open Registry</Link></li>
-//                 </ul>
-//               </div>
-
-//               {/* Continue with other dropdowns... */}
-//               {/* Keep all your existing dropdowns, just wrap them in nav-item dropdown class */}
-//             </div>
-
-//             <div className="auth-links ms-auto">
-//               {userInfo ? (
-//                 <div className="nav-item dropdown">
-//                   <button
-//                     className="dropdown-toggle nav-link text-light border-0 bg-transparent"
-//                     type="button"
-//                     data-bs-toggle="dropdown"
-//                     aria-expanded="false"
-//                   >
-//                     {userInfo.name}
-//                   </button>
-//                   <ul className="dropdown-menu dropdown-menu-end">
-//                     <li>
-//                       <Link className={`dropdown-item ${isActive('/profile')}`} to="/profile">Profile</Link>
-//                     </li>
-//                     <li>
-//                       <button className="dropdown-item" onClick={logoutHandler}>Logout</button>
-//                     </li>
-//                   </ul>
-//                 </div>
-//               ) : (
-//                 <div className="d-flex gap-3">
-//                   <Link className={`nav-link text-light ${isActive('/login')}`} to="/login">
-//                     <FaSignInAlt /> Sign In
-//                   </Link>
-//                   <Link className={`nav-link text-light ${isActive('/register')}`} to="/register">
-//                     <FaSignOutAlt /> Sign Up
-//                   </Link>
-//                 </div>
-//               )}
-//             </div>
-//           </div>
-//         </div>
-//       </nav>
-//     </header>
-//   );
-// };
-
-// export default Header;
-
-
-// import React from 'react';
-// import { FaSignInAlt, FaSignOutAlt } from 'react-icons/fa';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { useNavigate, Link, useLocation } from 'react-router-dom';
-// import { useLogoutMutation } from '../slices/userApiSlice';
-// import { logout } from '../slices/authSlice';
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-// import './Header.css';
-
-// const Header = () => {
-//   const { userInfo } = useSelector((state) => state.auth);
-//   const dispatch = useDispatch();
-//   const navigate = useNavigate();
-//   const location = useLocation();
-//   const [logoutApiCall] = useLogoutMutation();
-
-//   const logoutHandler = async () => {
-//     try {
-//       await logoutApiCall().unwrap();
-//       dispatch(logout());
-//       navigate('/');
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   };
-
-//   const isActive = (path) => {
-//     return location.pathname === path ? 'active-nav-link' : '';
-//   };
-
-//   return (
-//     <header>
-//       <div className="bg-dark py-3">
-//         <div className="container-fluid">
-//           <div className="d-flex align-items-center justify-content-between">
-//             <div className="logo-container">
-//               <img
-//                 src="images/logo.JPG"
-//                 alt="The College Logo"
-//                 className="logo"
-//               />
-//             </div>
-            
-//             <div className="nav-container overflow-auto flex-grow-1 mx-4" style={{ whiteSpace: 'nowrap' }}>
-//               <div className="d-flex align-items-center gap-3">
-//                 <Link className={`nav-link text-light ${isActive('/')}`} to="/" style={{ fontSize: '1.3rem' }}>Home</Link>
-//                 <Link className={`nav-link text-light ${isActive('/provost')}`} to="/provost" style={{ fontSize: '1.3rem' }}>Provost</Link>
-//                 <Link className={`nav-link text-light ${isActive('/registrar')}`} to="/registrar" style={{ fontSize: '1.3rem' }}>Registrar</Link>
-//                 <Link className={`nav-link text-light ${isActive('/librarian')}`} to="/librarian" style={{ fontSize: '1.3rem' }}>Librarian</Link>
-//                 <Link className={`nav-link text-light ${isActive('/tetfund')}`} to="/tetfund" style={{ fontSize: '1.3rem' }}>TETFUND</Link>
-
-//                 <div className="dropdown">
-//                   <button
-//                     className={`dropdown-toggle nav-link text-light border-0 bg-transparent ${location.pathname.includes('/registrar') ? 'active-nav-link' : ''}`}
-//                     type="button"
-//                     data-bs-toggle="dropdown"
-//                     aria-expanded="false"
-//                     style={{ fontSize: '1.3rem' }}
-//                   >
-//                     Registrar's Office
-//                   </button>
-//                   <ul className="dropdown-menu">
-//                     <li><Link className={`dropdown-item ${isActive('/exams-records')}`} to="/exams-records">Exams and Records</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/establishment-office')}`} to="/establishment-office">Establishment</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/admission-office')}`} to="/admission-office">Admissions</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/student-affairs')}`} to="/student-affairs">Student Affairs</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/open-registry')}`} to="/open-registry">Open Registry</Link></li>
-//                   </ul>
-//                 </div>
-
-//                 <div className="dropdown">
-//                   <button
-//                     className={`dropdown-toggle nav-link text-light border-0 bg-transparent ${location.pathname.includes('/dean-') || location.pathname.includes('/school-') ? 'active-nav-link' : ''}`}
-//                     type="button"
-//                     data-bs-toggle="dropdown"
-//                     aria-expanded="false"
-//                     style={{ fontSize: '1.3rem' }}
-//                   >
-//                     Schools
-//                   </button>
-//                   <ul className="dropdown-menu">
-//                     <li><Link className={`dropdown-item ${isActive('/dean-school-of-science')}`} to="/dean-school-of-science">The Dean School of Science</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/dean-school-of-languages')}`} to="/dean-school-of-languages">The Dean School of Languages</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/dean-school-of-law')}`} to="/dean-school-of-law">The Dean School of Law</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/education')}`} to="/education">The Dean School of Education</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/early-child')}`} to="/early-child">The Dean School of Early Child Care Education</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/school-of-arts')}`} to="/school-of-arts">The Dean School of Arts Social and Management Sciences</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/school-of-vocational')}`} to="/school-of-vocational">The Dean School of Vocational and Technical Education</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/centre-for-social-and-management-science')}`} to="/centre-for-social-and-management-science">The Dean Centre for Social and Management Sciences</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/general-studies')}`} to="/general-studies">The Dean General Studies</Link></li>
-//                   </ul>
-//                 </div>
-
-//                 <div className="dropdown">
-//                   <button
-//                     className={`dropdown-toggle nav-link text-light border-0 bg-transparent ${location.pathname === '/staff' || location.pathname === '/students' ? 'active-nav-link' : ''}`}
-//                     type="button"
-//                     data-bs-toggle="dropdown"
-//                     aria-expanded="false"
-//                     style={{ fontSize: '1.3rem' }}
-//                   >
-//                     Our Portals
-//                   </button>
-//                   <ul className="dropdown-menu">
-//                     <li><Link className={`dropdown-item ${isActive('/staff')}`} to="/staff">Staff</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/students')}`} to="/students">Students</Link></li>
-//                   </ul>
-//                 </div>
-
-//                 <div className="dropdown">
-//                   <button
-//                     className={`dropdown-toggle nav-link text-light border-0 bg-transparent ${location.pathname.includes('department-') ? 'active-nav-link' : ''}`}
-//                     type="button"
-//                     data-bs-toggle="dropdown"
-//                     aria-expanded="false"
-//                     style={{ fontSize: '1.3rem' }}
-//                   >
-//                     Departments
-//                   </button>
-//                   <ul className="dropdown-menu">
-//                     <li><Link className={`dropdown-item ${isActive('/department-computer-science')}`} to="/department-computer-science">Department of Computer Science</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/department-mathematics')}`} to="/department-mathematics">Departments of Mathematics</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/department-english')}`} to="/department-english">Department of English</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/department-hausa')}`} to="/department-hausa">Department of Hausa</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/integrated-science')}`} to="/integrated-science">Department of Integrated Science</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/arabic')}`} to="/arabic">Department of Arabic</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/islamic-studies')}`} to="/islamic-studies">Department of Islamic Studies</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/economics')}`} to="/economics">Department of Economics</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/social-studies')}`} to="/social-studies">Department of Social Studies</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/civil-law')}`} to="/civil-law">Department of Civil Law</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/sharia-civil-law')}`} to="/sharia-civil-law">Department of Sharia and Civil Law</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/home-management')}`} to="/home-management">Department of Home Management</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/department-education')}`} to="/department-education">Department of Education</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/primary-education')}`} to="/primary-education">Department of Primary Education</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/business-education')}`} to="/business-education">Department of Business Education</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/public-admin')}`} to="/public-admin">Department of Public Admin</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/quranic-science')}`} to="/quranic-science">Department of Qur'anic Science</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/community-social-development')}`} to="/community-social-development">Department of Community and Social Development</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/peace-conflict-resolution')}`} to="/peace-conflict-resolution">Department of Peace and Conflict Resolution</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/library-information-science')}`} to="/library-information-science">Department of Library and Information Science</Link></li>
-//                   </ul>
-//                 </div>
-
-//                 <div className="dropdown">
-//                   <button
-//                     className={`dropdown-toggle nav-link text-light border-0 bg-transparent ${location.pathname === '/diploma' || location.pathname === '/nce' ? 'active-nav-link' : ''}`}
-//                     type="button"
-//                     data-bs-toggle="dropdown"
-//                     aria-expanded="false"
-//                     style={{ fontSize: '1.3rem' }}
-//                   >
-//                     Programmes
-//                   </button>
-//                   <ul className="dropdown-menu">
-//                     <li><Link className={`dropdown-item ${isActive('/diploma')}`} to="/diploma">Diploma</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/nce')}`} to="/nce">NCE</Link></li>
-//                   </ul>
-//                 </div>
-
-//                 <div className="dropdown">
-//                   <button
-//                     className={`dropdown-toggle nav-link text-light border-0 bg-transparent ${location.pathname.includes('/registration') || location.pathname.includes('/payment') || location.pathname.includes('/accommodation') || location.pathname.includes('/results') ? 'active-nav-link' : ''}`}
-//                     type="button"
-//                     data-bs-toggle="dropdown"
-//                     aria-expanded="false"
-//                     style={{ fontSize: '1.3rem' }}
-//                   >
-//                     Students
-//                   </button>
-//                   <ul className="dropdown-menu">
-//                     <li><Link className={`dropdown-item ${isActive('/registration')}`} to="/registration">Registration</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/payment')}`} to="/payment">Payments</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/accommodation')}`} to="/accommodation">Accommodations</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/results')}`} to="/results">Results</Link></li>
-//                   </ul>
-//                 </div>
-//               </div>
-//             </div>
-
-//             <div className="d-flex gap-3">
-//               {userInfo ? (
-//                 <div className="dropdown">
-//                   <button
-//                     className="dropdown-toggle nav-link text-light border-0 bg-transparent"
-//                     type="button"
-//                     data-bs-toggle="dropdown"
-//                     aria-expanded="false"
-//                   >
-//                     {userInfo.name}
-//                   </button>
-//                   <ul className="dropdown-menu">
-//                     <li>
-//                       <Link className={`dropdown-item ${isActive('/profile')}`} to="/profile">Profile</Link>
-//                     </li>
-//                     <li>
-//                       <button className="dropdown-item" onClick={logoutHandler}>Logout</button>
-//                     </li>
-//                   </ul>
-//                 </div>
-//               ) : (
-//                 <>
-//                   <Link className={`nav-link text-light ${isActive('/login')}`} to="/login">
-//                     <FaSignInAlt /> Sign In
-//                   </Link>
-//                   <Link className={`nav-link text-light ${isActive('/register')}`} to="/register">
-//                     <FaSignOutAlt /> Sign Up
-//                   </Link>
-//                 </>
-//               )}
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </header>
-//   );
-// };
-
-// export default Header;
-
-// import React from 'react';
-// import { FaSignInAlt, FaSignOutAlt } from 'react-icons/fa';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { useNavigate, Link, useLocation } from 'react-router-dom';
-// import { useLogoutMutation } from '../slices/userApiSlice';
-// import { logout } from '../slices/authSlice';
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-// import './Header.css';
-
-// const Header = () => {
-//   const { userInfo } = useSelector((state) => state.auth);
-//   const dispatch = useDispatch();
-//   const navigate = useNavigate();
-//   const location = useLocation();
-//   const [logoutApiCall] = useLogoutMutation();
-
-//   const logoutHandler = async () => {
-//     try {
-//       await logoutApiCall().unwrap();
-//       dispatch(logout());
-//       navigate('/');
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   };
-
-//   const isActive = (path) => {
-//     return location.pathname === path ? 'active-nav-link' : '';
-//   };
-
-//   return (
-//     <header>
-//       <div className="bg-dark py-3">
-//         <div className="container-fluid">
-//           <div className="d-flex align-items-center justify-content-between">
-//             <div className="logo-container">
-//               <img
-//                 src="images/logo.JPG"
-//                 alt="The College Logo"
-//                 className="logo"
-//               />
-//             </div>
-
-//             <div className="nav-container overflow-auto flex-grow-1 mx-4" style={{ whiteSpace: 'nowrap' }}>
-//               <div className="d-flex align-items-center gap-3">
-//                 <Link className={`nav-link text-light ${isActive('/')}`} to="/" style={{ fontSize: '1.3rem' }}>Home</Link>
-//                 <Link className={`nav-link text-light ${isActive('/provost')}`} to="/provost" style={{ fontSize: '1.3rem' }}>Provost</Link>
-//                 <Link className={`nav-link text-light ${isActive('/registrar')}`} to="/registrar" style={{ fontSize: '1.3rem' }}>Registrar</Link>
-//                 <Link className={`nav-link text-light ${isActive('/librarian')}`} to="/librarian" style={{ fontSize: '1.3rem' }}>Librarian</Link>
-//                 <Link className={`nav-link text-light ${isActive('/tetfund')}`} to="/tetfund" style={{ fontSize: '1.3rem' }}>TETFUND</Link>
-
-//                 <div className="dropdown">
-//                   <button
-//                     className={`dropdown-toggle nav-link text-light border-0 bg-transparent ${location.pathname.includes('/registrar') ? 'active-nav-link' : ''}`}
-//                     type="button"
-//                     data-bs-toggle="dropdown"
-//                     aria-expanded="false"
-//                     style={{ fontSize: '1.3rem' }}
-//                   >
-//                     Registrar's Office
-//                   </button>
-//                   <ul className="dropdown-menu">
-//                     <li><Link className={`dropdown-item ${isActive('/exams-records')}`} to="/exams-records">Exams and Records</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/establishment-office')}`} to="/establishment-office">Establishment</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/admission-office')}`} to="/admission-office">Admissions</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/student-affairs')}`} to="/student-affairs">Student Affairs</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/open-registry')}`} to="/open-registry">Open Registry</Link></li>
-//                   </ul>
-//                 </div>
-
-//                 <div className="dropdown">
-//                   <button
-//                     className={`dropdown-toggle nav-link text-light border-0 bg-transparent ${location.pathname.includes('/dean-') || location.pathname.includes('/school-') ? 'active-nav-link' : ''}`}
-//                     type="button"
-//                     data-bs-toggle="dropdown"
-//                     aria-expanded="false"
-//                     style={{ fontSize: '1.3rem' }}
-//                   >
-//                     Schools
-//                   </button>
-//                   <ul className="dropdown-menu">
-//                     <li><Link className={`dropdown-item ${isActive('/dean-school-of-science')}`} to="/dean-school-of-science">The Dean School of Science</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/dean-school-of-languages')}`} to="/dean-school-of-languages">The Dean School of Languages</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/dean-school-of-law')}`} to="/dean-school-of-law">The Dean School of Law</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/education')}`} to="/education">The Dean School of Education</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/early-child')}`} to="/early-child">The Dean School of Early Child Care Education</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/school-of-arts')}`} to="/school-of-arts">The Dean School of Arts Social and Management Sciences</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/school-of-vocational')}`} to="/school-of-vocational">The Dean School of Vocational and Technical Education</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/centre-for-social-and-management-science')}`} to="/centre-for-social-and-management-science">The Dean Centre for Social and Management Sciences</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/general-studies')}`} to="/general-studies">The Dean General Studies</Link></li>
-//                   </ul>
-//                 </div>
-
-//                 <div className="dropdown">
-//                   <button
-//                     className={`dropdown-toggle nav-link text-light border-0 bg-transparent ${location.pathname === '/staff' || location.pathname === '/students' ? 'active-nav-link' : ''}`}
-//                     type="button"
-//                     data-bs-toggle="dropdown"
-//                     aria-expanded="false"
-//                     style={{ fontSize: '1.3rem' }}
-//                   >
-//                     Our Portals
-//                   </button>
-//                   <ul className="dropdown-menu">
-//                     <li><Link className={`dropdown-item ${isActive('/staff')}`} to="/staff">Staff</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/students')}`} to="/students">Students</Link></li>
-//                   </ul>
-//                 </div>
-
-//                 <div className="dropdown">
-//                   <button
-//                     className={`dropdown-toggle nav-link text-light border-0 bg-transparent ${location.pathname.includes('department-') ? 'active-nav-link' : ''}`}
-//                     type="button"
-//                     data-bs-toggle="dropdown"
-//                     aria-expanded="false"
-//                     style={{ fontSize: '1.3rem' }}
-//                   >
-//                     Departments
-//                   </button>
-//                   <ul className="dropdown-menu">
-//                     <li><Link className={`dropdown-item ${isActive('/department-computer-science')}`} to="/department-computer-science">Department of Computer Science</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/department-mathematics')}`} to="/department-mathematics">Departments of Mathematics</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/department-english')}`} to="/department-english">Department of English</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/department-hausa')}`} to="/department-hausa">Department of Hausa</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/integrated-science')}`} to="/integrated-science">Department of Integrated Science</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/arabic')}`} to="/arabic">Department of Arabic</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/islamic-studies')}`} to="/islamic-studies">Department of Islamic Studies</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/economics')}`} to="/economics">Department of Economics</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/social-studies')}`} to="/social-studies">Department of Social Studies</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/civil-law')}`} to="/civil-law">Department of Civil Law</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/sharia-civil-law')}`} to="/sharia-civil-law">Department of Sharia and Civil Law</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/home-management')}`} to="/home-management">Department of Home Management</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/department-education')}`} to="/department-education">Department of Education</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/primary-education')}`} to="/primary-education">Department of Primary Education</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/business-education')}`} to="/business-education">Department of Business Education</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/public-admin')}`} to="/public-admin">Department of Public Admin</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/quranic-science')}`} to="/quranic-science">Department of Qur'anic Science</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/community-social-development')}`} to="/community-social-development">Department of Community and Social Development</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/peace-conflict-resolution')}`} to="/peace-conflict-resolution">Department of Peace and Conflict Resolution</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/library-information-science')}`} to="/library-information-science">Department of Library and Information Science</Link></li>
-//                   </ul>
-//                 </div>
-
-//                 <div className="dropdown">
-//                   <button
-//                     className={`dropdown-toggle nav-link text-light border-0 bg-transparent ${location.pathname === '/diploma' || location.pathname === '/nce' ? 'active-nav-link' : ''}`}
-//                     type="button"
-//                     data-bs-toggle="dropdown"
-//                     aria-expanded="false"
-//                     style={{ fontSize: '1.3rem' }}
-//                   >
-//                     Programmes
-//                   </button>
-//                   <ul className="dropdown-menu">
-//                     <li><Link className={`dropdown-item ${isActive('/diploma')}`} to="/diploma">Diploma</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/nce')}`} to="/nce">NCE</Link></li>
-//                   </ul>
-//                 </div>
-
-//                 <div className="dropdown">
-//                   <button
-//                     className={`dropdown-toggle nav-link text-light border-0 bg-transparent ${location.pathname.includes('/registration') || location.pathname.includes('/payment') || location.pathname.includes('/accommodation') || location.pathname.includes('/results') ? 'active-nav-link' : ''}`}
-//                     type="button"
-//                     data-bs-toggle="dropdown"
-//                     aria-expanded="false"
-//                     style={{ fontSize: '1.3rem' }}
-//                   >
-//                     Students
-//                   </button>
-//                   <ul className="dropdown-menu">
-//                     <li><Link className={`dropdown-item ${isActive('/registration')}`} to="/registration">Registration</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/payment')}`} to="/payment">Payments</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/accommodation')}`} to="/accommodation">Accommodations</Link></li>
-//                     <li><Link className={`dropdown-item ${isActive('/results')}`} to="/results">Results</Link></li>
-//                   </ul>
-//                 </div>
-//               </div>
-//             </div>
-
-//             <div className="d-flex gap-3">
-//               {userInfo ? (
-//                 <div className="dropdown">
-//                   <button
-//                     className="dropdown-toggle nav-link text-light border-0 bg-transparent"
-//                     type="button"
-//                     data-bs-toggle="dropdown"
-//                     aria-expanded="false"
-//                   >
-//                     {userInfo.name}
-//                   </button>
-//                   <ul className="dropdown-menu">
-//                     <li>
-//                       <Link className={`dropdown-item ${isActive('/profile')}`} to="/profile">Profile</Link>
-//                     </li>
-//                     <li>
-//                       <button className="dropdown-item" onClick={logoutHandler}>Logout</button>
-//                     </li>
-//                   </ul>
-//                 </div>
-//               ) : (
-//                 <>
-//                   <Link className={`nav-link text-light ${isActive('/login')}`} to="/login">
-//                     <FaSignInAlt /> Sign In
-//                   </Link>
-//                   <Link className={`nav-link text-light ${isActive('/register')}`} to="/register">
-//                     <FaSignOutAlt /> Sign Up
-//                   </Link>
-//                 </>
-//               )}
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </header>
-//   );
-// };
-
-// export default Header;
-
-// import React from 'react';
-// import { FaSignInAlt, FaSignOutAlt } from 'react-icons/fa';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { useNavigate, Link, NavLink } from 'react-router-dom';
-// import { useLogoutMutation } from '../slices/userApiSlice';
-// import { logout } from '../slices/authSlice';
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-// import './Header.css'; // Import custom CSS for styles
-
-// const Header = () => {
-//   const { userInfo } = useSelector((state) => state.auth);
-//   const dispatch = useDispatch();
-//   const navigate = useNavigate();
-//   const [logoutApiCall] = useLogoutMutation();
-
-//   const logoutHandler = async () => {
-//     try {
-//       await logoutApiCall().unwrap();
-//       dispatch(logout());
-//       navigate('/');
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   };
-
-//   return (
-//     <header>
-//       <div className="bg-dark py-3">
-//         <div className="container-fluid d-flex align-items-center justify-content-between flex-wrap">
-//           <div className="logo-container">
-//             <img
-//               src="images/logo.JPG"
-//               alt="The College Logo"
-//               className="logo" // Use CSS class for logo styling
-//             />
-//           </div>
-//           <div className="d-flex flex-wrap justify-content-center gap-3 w-100 mt-2 mt-md-0">
-//             <NavLink className="nav-link text-light" to="/" activeClassName="active" style={{ fontSize: '1.3rem' }}>Home</NavLink>
-//             <NavLink className="nav-link text-light" to="/provost" activeClassName="active" style={{ fontSize: '1.3rem' }}>Provost</NavLink>
-//             <NavLink className="nav-link text-light" to="/registrar" activeClassName="active" style={{ fontSize: '1.3rem' }}>Registrar</NavLink>
-//             <NavLink className="nav-link text-light" to="/librarian" activeClassName="active" style={{ fontSize: '1.3rem' }}>Librarian</NavLink>
-//             <NavLink className="nav-link text-light" to="/tetfund" activeClassName="active" style={{ fontSize: '1.3rem' }}>TETFUND</NavLink>
-
-//             <div className="dropdown">
-//               <button
-//                 className="dropdown-toggle nav-link text-light border-0 bg-transparent"
-//                 type="button"
-//                 data-bs-toggle="dropdown"
-//                 aria-expanded="false"
-//                 style={{ fontSize: '1.3rem' }}
-//               >
-//                 Registrar's Office
-//               </button>
-//               <ul className="dropdown-menu">
-//                 <li><Link className="dropdown-item" to="/exams-records">Exams and Records</Link></li>
-//                 <li><Link className="dropdown-item" to="/establishment-office">Establishment</Link></li>
-//                 <li><Link className="dropdown-item" to="/admission-office">Admissions</Link></li>
-//                 <li><Link className="dropdown-item" to="/student-affairs">Student Affairs</Link></li>
-//                 <li><Link className="dropdown-item" to="/open-registry">Open Registry</Link></li>
-//               </ul>
-//             </div>
-
-//             <div className="dropdown">
-//               <button
-//                 className="dropdown-toggle nav-link text-light border-0 bg-transparent"
-//                 type="button"
-//                 data-bs-toggle="dropdown"
-//                 aria-expanded="false"
-//                 style={{ fontSize: '1.3rem' }}
-//               >
-//                 Schools
-//               </button>
-//               <ul className="dropdown-menu">
-//                 <li><Link className="dropdown-item" to="/dean-school-of-science">The Dean School of Science</Link></li>
-//                 <li><Link className="dropdown-item" to="/dean-school-of-languages">The Dean School of Languages</Link></li>
-//                 <li><Link className="dropdown-item" to="/dean-school-of-law">The Dean School of Law</Link></li>
-//                 <li><Link className="dropdown-item" to="/education">The Dean School of Education</Link></li>
-//                 <li><Link className="dropdown-item" to="/early-child">The Dean School of Early Child Care Education</Link></li>
-//                 <li><Link className="dropdown-item" to="/school-of-arts">The Dean School of Arts Social and Management Sciences</Link></li>
-//                 <li><Link className="dropdown-item" to="/school-of-vocational">The Dean School of Vocational and Technical Education</Link></li>
-//                 <li><Link className="dropdown-item" to="/centre-for-social-and-management-science">The Dean Centre for Social and Management Sciences</Link></li>
-//                 <li><Link className="dropdown-item" to="/general-studies">The Dean General Studies</Link></li>
-//               </ul>
-//             </div>
-
-//             <div className="dropdown">
-//               <button
-//                 className="dropdown-toggle nav-link text-light border-0 bg-transparent"
-//                 type="button"
-//                 data-bs-toggle="dropdown"
-//                 aria-expanded="false"
-//                 style={{ fontSize: '1.3rem' }}
-//               >
-//                 Our Portals
-//               </button>
-//               <ul className="dropdown-menu">
-//                 <li><Link className="dropdown-item" to="/staff">Staff</Link></li>
-//                 <li><Link className="dropdown-item" to="/students">Students</Link></li>
-//               </ul>
-//             </div>
-
-//             <div className="dropdown">
-//               <button
-//                 className="dropdown-toggle nav-link text-light border-0 bg-transparent"
-//                 type="button"
-//                 data-bs-toggle="dropdown"
-//                 aria-expanded="false"
-//                 style={{ fontSize: '1.3rem' }}
-//               >
-//                 Departments
-//               </button>
-//               <ul className="dropdown-menu">
-//                 <li><Link className="dropdown-item" to="/department-computer-science">Department of Computer Science</Link></li>
-//                 <li><Link className="dropdown-item" to="/department-mathematics">Departments of Mathematics</Link></li>
-//                 <li><Link className="dropdown-item" to="/department-english">Department of English</Link></li>
-//                 <li><Link className="dropdown-item" to="/department-hausa">Department of Hausa</Link></li>
-//                 <li><Link className="dropdown-item" to="/integrated-science">Department of Integrated Science</Link></li>
-//                 <li><Link className="dropdown-item" to="/arabic">Department of Arabic</Link></li>
-//                 <li><Link className="dropdown-item" to="/islamic-studies">Department of Islamic Studies</Link></li>
-//                 <li><Link className="dropdown-item" to="/economics">Department of Economics</Link></li>
-//                 <li><Link className="dropdown-item" to="/social-studies">Department of Social Studies</Link></li>
-//                 <li><Link className="dropdown-item" to="/civil-law">Department of Civil Law</Link></li>
-//                 <li><Link className="dropdown-item" to="/sharia-civil-law">Department of Sharia and Civil Law</Link></li>
-//                 <li><Link className="dropdown-item" to="/home-management">Department of Home Management</Link></li>
-//                 <li><Link className="dropdown-item" to="/department-education">Department of Education</Link></li>
-//                 <li><Link className="dropdown-item" to="/primary-education">Department of Primary Education</Link></li>
-//                 <li><Link className="dropdown-item" to="/business-education">Department of Business Education</Link></li>
-//                 <li><Link className="dropdown-item" to="/public-admin">Department of Public Admin</Link></li>
-//                 <li><Link className="dropdown-item" to="/quranic-science">Department of Qur'anic Science</Link></li>
-//                 <li><Link className="dropdown-item" to="/community-social-development">Department of Community and Social Development</Link></li>
-//                 <li><Link className="dropdown-item" to="/peace-conflict-resolution">Department of Peace and Conflict Resolution</Link></li>
-//                 <li><Link className="dropdown-item" to="/library-information-science">Department of Library and Information Science</Link></li>
-//               </ul>
-//             </div>
-
-//             <div className="dropdown">
-//               <button
-//                 className="dropdown-toggle nav-link text-light border-0 bg-transparent"
-//                 type="button"
-//                 data-bs-toggle="dropdown"
-//                 aria-expanded="false"
-//                 style={{ fontSize: '1.3rem' }}
-//               >
-//                 Programmes
-//               </button>
-//               <ul className="dropdown-menu">
-//                 <li><Link className="dropdown-item" to="/diploma">Diploma</Link></li>
-//                 <li><Link className="dropdown-item" to="/nce">NCE</Link></li>
-//               </ul>
-//             </div>
-
-//             <div className="dropdown">
-//               <button
-//                 className="dropdown-toggle nav-link text-light border-0 bg-transparent"
-//                 type="button"
-//                 data-bs-toggle="dropdown"
-//                 aria-expanded="false"
-//                 style={{ fontSize: '1.3rem' }}
-//               >
-//                 Students
-//               </button>
-//               <ul className="dropdown-menu">
-//                 <li><Link className="dropdown-item" to="/registration">Registration</Link></li>
-//                 <li><Link className="dropdown-item" to="/payment">Payments</Link></li>
-//                 <li><Link className="dropdown-item" to="/accommodation">Accommodations</Link></li>
-//                 <li><Link className="dropdown-item" to="/results">Results</Link></li>
-//               </ul>
-//             </div>
-//           </div>
-
-//           <div className="d-flex gap-3">
-//             {userInfo ? (
-//               <div className="dropdown">
-//                 <button
-//                   className="dropdown-toggle nav-link text-light border-0 bg-transparent"
-//                   type="button"
-//                   data-bs-toggle="dropdown"
-//                   aria-expanded="false"
-//                 >
-//                   {userInfo.name}
-//                 </button>
-//                 <ul className="dropdown-menu">
-//                   <li>
-//                     <Link className="dropdown-item" to="/profile">Profile</Link>
-//                   </li>
-//                   <li>
-//                     <button className="dropdown-item" onClick={logoutHandler}>Logout</button>
-//                   </li>
-//                 </ul>
-//               </div>
-//             ) : (
-//               <>
-//                 <Link className="nav-link text-light" to="/login">
-//                   <FaSignInAlt /> Sign In
-//                 </Link>
-//                 <Link className="nav-link text-light" to="/register">
-//                   <FaSignOutAlt /> Sign Up
-//                 </Link>
-//               </>
-//             )}
-//           </div>
-//         </div>
-//       </div>
-//     </header>
-//   );
-// };
-
-// export default Header;
-
-import React from 'react';
-import { FaSignInAlt, FaSignOutAlt } from 'react-icons/fa';
+import React, { useState, useEffect } from 'react';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate, Link, NavLink } from 'react-router-dom';
 import { useLogoutMutation } from '../slices/userApiSlice';
 import { logout } from '../slices/authSlice';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import './Header.css'; // Import custom CSS for styles
+import "./Header.css";
 
 const Header = () => {
   const { userInfo } = useSelector((state) => state.auth);
@@ -1212,195 +13,463 @@ const Header = () => {
   const navigate = useNavigate();
   const [logoutApiCall] = useLogoutMutation();
 
+  const [scrolled, setScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [quickLinksOpen, setQuickLinksOpen] = useState(false);
+  const [activeNewsIndex, setActiveNewsIndex] = useState(0);
+  const [fadeNews, setFadeNews] = useState(true);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  // Custom COELS announcement notices
+  const newsItems = [
+    "Welcome to the College of Education and Legal Studies, Nguru. Knowledge is Treasure!",
+    "Online registration for the 2026/2027 academic session is currently active.",
+    "TETFund Interventions: Advancing standard legal and teacher education."
+  ];
+
+  // Quick Links dropdown options
+  const quickLinks = [
+    { label: "Staff Portal", to: "/staff" },
+    { label: "Student Portal", to: "/students" },
+    { label: "Online Registration", to: "/registration" },
+    { label: "School Fee Payment", to: "/payment" },
+    { label: "Hostel Accommodation", to: "/accommodation" },
+    { label: "Academic Results", to: "/results" }
+  ];
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      alert(`Searching for: "${searchQuery}"`);
+      setSearchQuery("");
+    }
+  };
+
   const logoutHandler = async () => {
     try {
       await logoutApiCall().unwrap();
       dispatch(logout());
+      setMobileMenuOpen(false);
       navigate('/');
     } catch (err) {
       console.log(err);
     }
   };
 
-  return (
-    <header>
-      <div className="bg-dark py-3">
-        <div className="container-fluid d-flex align-items-center justify-content-between flex-nowrap">
-          <div className="logo-container">
-            <img
-              src="images/logo.JPG"
-              alt="The College Logo"
-              className="logo" // Use CSS class for logo styling
-            />
-          </div>
-          <div className="d-flex flex-wrap justify-content-center gap-2 w-100 mt-2 mt-md-0">
-            <NavLink className="nav-link text-light" to="/" activeClassName="active" style={{ fontSize: '1.1rem' }}>Home</NavLink>
-            <NavLink className="nav-link text-light" to="/provost" activeClassName="active" style={{ fontSize: '1.1rem' }}>Provost</NavLink>
-            <NavLink className="nav-link text-light" to="/registrar" activeClassName="active" style={{ fontSize: '1.1rem' }}>Registrar</NavLink>
-            <NavLink className="nav-link text-light" to="/librarian" activeClassName="active" style={{ fontSize: '1.1rem' }}>Librarian</NavLink>
-            <NavLink className="nav-link text-light" to="/tetfund" activeClassName="active" style={{ fontSize: '1.1rem' }}>TETFUND</NavLink>
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 1024);
+    };
 
-            <div className="dropdown">
-              <button
-                className="dropdown-toggle nav-link text-light border-0 bg-transparent"
-                type="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                style={{ fontSize: '1.1rem' }}
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+
+    const handleOutsideClick = (e) => {
+      if (!e.target.closest('.quick-links-dropdown')) {
+        setQuickLinksOpen(false);
+      }
+    };
+
+    // News Ticker Interval
+    const newsTimer = setInterval(() => {
+      setFadeNews(false);
+      setTimeout(() => {
+        setActiveNewsIndex((prevIndex) => (prevIndex + 1) % newsItems.length);
+        setFadeNews(true);
+      }, 300);
+    }, 5000);
+
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('click', handleOutsideClick);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('click', handleOutsideClick);
+      clearInterval(newsTimer);
+    };
+  }, []);
+
+  // Complete, deep COELS hierarchical menu structure
+  const menuData = [
+    { label: "Home", to: "/" },
+    {
+      label: "Administration",
+      to: "#",
+      children: [
+        { label: "Provost", to: "/provost" },
+        { label: "Registrar", to: "/registrar" },
+        { label: "Librarian", to: "/librarian" },
+        {
+          label: "Registrar's Office",
+          to: "#",
+          children: [
+            { label: "Exams and Records", to: "/exams-records" },
+            { label: "Establishment", to: "/establishment-office" },
+            { label: "Admissions", to: "/admission-office" },
+            { label: "Student Affairs", to: "/student-affairs" },
+            { label: "Open Registry", to: "/open-registry" }
+          ]
+        }
+      ]
+    },
+    {
+      label: "Schools",
+      to: "#",
+      children: [
+        { label: "School of Science", to: "/dean-school-of-science" },
+        { label: "School of Languages", to: "/dean-school-of-languages" },
+        { label: "School of Law", to: "/dean-school-of-law" },
+        { label: "School of Education", to: "/education" },
+        { label: "School of Early Child Care Education", to: "/early-child" },
+        { label: "School of Arts, Social & Management Sciences", to: "/school-of-arts" },
+        { label: "School of Vocational & Technical Education", to: "/school-of-vocational" },
+        { label: "Centre for Social & Management Sciences", to: "/centre-for-social-and-management-science" },
+        { label: "School of General Studies", to: "/general-studies" }
+      ]
+    },
+    {
+      label: "Departments",
+      to: "#",
+      children: [
+        { label: "Computer Science", to: "/department-computer-science" },
+        { label: "Mathematics", to: "/department-mathematics" },
+        { label: "English", to: "/department-english" },
+        { label: "Hausa", to: "/department-hausa" },
+        { label: "Integrated Science", to: "/integrated-science" },
+        { label: "Arabic", to: "/arabic" },
+        { label: "Islamic Studies", to: "/islamic-studies" },
+        { label: "Economics", to: "/economics" },
+        { label: "Social Studies", to: "/social-studies" },
+        { label: "Civil Law", to: "/civil-law" },
+        { label: "Sharia & Civil Law", to: "/sharia-civil-law" },
+        { label: "Home Management", to: "/home-management" },
+        { label: "Education", to: "/department-education" },
+        { label: "Primary Education", to: "/primary-education" },
+        { label: "Business Education", to: "/business-education" },
+        { label: "Public Admin", to: "/public-admin" },
+        { label: "Qur'anic Science", to: "/quranic-science" },
+        { label: "Community & Social Development", to: "/community-social-development" },
+        { label: "Peace & Conflict Resolution", to: "/peace-conflict-resolution" },
+        { label: "Library & Information Science", to: "/library-information-science" }
+      ]
+    },
+    {
+      label: "Programmes",
+      to: "#",
+      children: [
+        { label: "Diploma", to: "/diploma" },
+        { label: "NCE", to: "/nce" }
+      ]
+    },
+    {
+      label: "Students",
+      to: "#",
+      children: [
+        { label: "Registration", to: "/registration" },
+        { label: "Payments", to: "/payment" },
+        { label: "Accommodations", to: "/accommodation" },
+        { label: "Results", to: "/results" }
+      ]
+    },
+    { label: "TETFUND", to: "/tetfund" }
+  ];
+
+  // User session links
+  const userNavLinks = userInfo ? [
+    { to: "/profile", label: "Profile" },
+    { to: "#", label: "Logout", isLogout: true }
+  ] : [
+    { to: "/register", label: "Sign Up" },
+    { to: "/login", label: "Sign In" }
+  ];
+
+  // Recursive Desktop Submenu renderer
+  const renderDesktopDropdown = (children) => {
+    return (
+      <ul className="dropdown-submenu-list">
+        {children.map((child, idx) => {
+          const hasChildren = child.children && child.children.length > 0;
+          return (
+            <li key={idx} className={`submenu-item ${hasChildren ? 'has-nested-dropdown' : ''}`}>
+              <NavLink 
+                to={hasChildren ? "#" : child.to} 
+                className="submenu-link"
+                onClick={(e) => {
+                  if (hasChildren) e.preventDefault();
+                }}
               >
-                Registrar's Office
-              </button>
-              <ul className="dropdown-menu">
-                <li><Link className="dropdown-item" to="/exams-records">Exams and Records</Link></li>
-                <li><Link className="dropdown-item" to="/establishment-office">Establishment</Link></li>
-                <li><Link className="dropdown-item" to="/admission-office">Admissions</Link></li>
-                <li><Link className="dropdown-item" to="/student-affairs">Student Affairs</Link></li>
-                <li><Link className="dropdown-item" to="/open-registry">Open Registry</Link></li>
-              </ul>
-            </div>
+                <span>{child.label}</span>
+                {hasChildren && <span className="chevron-right">&#9656;</span>}
+              </NavLink>
+              {hasChildren && renderDesktopDropdown(child.children)}
+            </li>
+          );
+        })}
+      </ul>
+    );
+  };
 
-            <div className="dropdown">
-              <button
-                className="dropdown-toggle nav-link text-light border-0 bg-transparent"
-                type="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                style={{ fontSize: '1.1rem' }}
-              >
-                Schools
-              </button>
-              <ul className="dropdown-menu">
-                <li><Link className="dropdown-item" to="/dean-school-of-science">The Dean School of Science</Link></li>
-                <li><Link className="dropdown-item" to="/dean-school-of-languages">The Dean School of Languages</Link></li>
-                <li><Link className="dropdown-item" to="/dean-school-of-law">The Dean School of Law</Link></li>
-                <li><Link className="dropdown-item" to="/education">The Dean School of Education</Link></li>
-                <li><Link className="dropdown-item" to="/early-child">The Dean School of Early Child Care Education</Link></li>
-                <li><Link className="dropdown-item" to="/school-of-arts">The Dean School of Arts Social and Management Sciences</Link></li>
-                <li><Link className="dropdown-item" to="/school-of-vocational">The Dean School of Vocational and Technical Education</Link></li>
-                <li><Link className="dropdown-item" to="/centre-for-social-and-management-science">The Dean Centre for Social and Management Sciences</Link></li>
-                <li><Link className="dropdown-item" to="/general-studies">The Dean General Studies</Link></li>
-              </ul>
-            </div>
+  // Recursive Mobile Accordion Component
+  const MobileMenuItem = ({ item, depth = 0, closeMenu }) => {
+    const [isOpen, setIsOpen] = useState(false);
+    const hasChildren = item.children && item.children.length > 0;
 
-            <div className="dropdown">
-              <button
-                className="dropdown-toggle nav-link text-light border-0 bg-transparent"
-                type="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                style={{ fontSize: '1.1rem' }}
-              >
-                Our Portals
-              </button>
-              <ul className="dropdown-menu">
-                <li><Link className="dropdown-item" to="/staff">Staff</Link></li>
-                <li><Link className="dropdown-item" to="/students">Students</Link></li>
-              </ul>
-            </div>
+    const handleToggle = (e) => {
+      if (hasChildren) {
+        e.preventDefault();
+        setIsOpen(!isOpen);
+      } else {
+        closeMenu();
+      }
+    };
 
-            <div className="dropdown">
-              <button
-                className="dropdown-toggle nav-link text-light border-0 bg-transparent"
-                type="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                style={{ fontSize: '1.1rem' }}
-              >
-                Departments
-              </button>
-              <ul className="dropdown-menu">
-                <li><Link className="dropdown-item" to="/department-computer-science">Department of Computer Science</Link></li>
-                <li><Link className="dropdown-item" to="/department-mathematics">Departments of Mathematics</Link></li>
-                <li><Link className="dropdown-item" to="/department-english">Department of English</Link></li>
-                <li><Link className="dropdown-item" to="/department-hausa">Department of Hausa</Link></li>
-                <li><Link className="dropdown-item" to="/integrated-science">Department of Integrated Science</Link></li>
-                <li><Link className="dropdown-item" to="/arabic">Department of Arabic</Link></li>
-                <li><Link className="dropdown-item" to="/islamic-studies">Department of Islamic Studies</Link></li>
-                <li><Link className="dropdown-item" to="/economics">Department of Economics</Link></li>
-                <li><Link className="dropdown-item" to="/social-studies">Department of Social Studies</Link></li>
-                <li><Link className="dropdown-item" to="/civil-law">Department of Civil Law</Link></li>
-                <li><Link className="dropdown-item" to="/sharia-civil-law">Department of Sharia and Civil Law</Link></li>
-                <li><Link className="dropdown-item" to="/home-management">Department of Home Management</Link></li>
-                <li><Link className="dropdown-item" to="/department-education">Department of Education</Link></li>
-                <li><Link className="dropdown-item" to="/primary-education">Department of Primary Education</Link></li>
-                <li><Link className="dropdown-item" to="/business-education">Department of Business Education</Link></li>
-                <li><Link className="dropdown-item" to="/public-admin">Department of Public Admin</Link></li>
-                <li><Link className="dropdown-item" to="/quranic-science">Department of Qur'anic Science</Link></li>
-                <li><Link className="dropdown-item" to="/community-social-development">Department of Community and Social Development</Link></li>
-                <li><Link className="dropdown-item" to="/peace-conflict-resolution">Department of Peace and Conflict Resolution</Link></li>
-                <li><Link className="dropdown-item" to="/library-information-science">Department of Library and Information Science</Link></li>
-              </ul>
-            </div>
-
-            <div className="dropdown">
-              <button
-                className="dropdown-toggle nav-link text-light border-0 bg-transparent"
-                type="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                style={{ fontSize: '1.1rem' }}
-              >
-                Programmes
-              </button>
-              <ul className="dropdown-menu">
-                <li><Link className="dropdown-item" to="/diploma">Diploma</Link></li>
-                <li><Link className="dropdown-item" to="/nce">NCE</Link></li>
-              </ul>
-            </div>
-
-            <div className="dropdown">
-              <button
-                className="dropdown-toggle nav-link text-light border-0 bg-transparent"
-                type="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                style={{ fontSize: '1.1rem' }}
-              >
-                Students
-              </button>
-              <ul className="dropdown-menu">
-                <li><Link className="dropdown-item" to="/registration">Registration</Link></li>
-                <li><Link className="dropdown-item" to="/payment">Payments</Link></li>
-                <li><Link className="dropdown-item" to="/accommodation">Accommodations</Link></li>
-                <li><Link className="dropdown-item" to="/results">Results</Link></li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="d-flex gap-2">
-            {userInfo ? (
-              <div className="dropdown">
-                <button
-                  className="dropdown-toggle nav-link text-light border-0 bg-transparent"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  {userInfo.name}
-                </button>
-                <ul className="dropdown-menu">
-                  <li>
-                    <Link className="dropdown-item" to="/profile">Profile</Link>
-                  </li>
-                  <li>
-                    <button className="dropdown-item" onClick={logoutHandler}>Logout</button>
-                  </li>
-                </ul>
-              </div>
-            ) : (
-              <>
-                <Link className="nav-link text-light" to="/login">
-                  <FaSignInAlt /> SignIn
-                </Link>
-                <Link className="nav-link text-light" to="/register">
-                  <FaSignOutAlt /> SignUp
-                </Link>
-              </>
+    return (
+      <div className={`mobile-nav-item depth-${depth}`}>
+        <div className="mobile-nav-link-wrapper">
+          <NavLink
+            to={hasChildren ? "#" : item.to}
+            onClick={handleToggle}
+            className={`mobile-link ${hasChildren ? 'has-children' : ''} ${isOpen ? 'active' : ''}`}
+            style={{ paddingLeft: `${(depth * 1) + 1}rem` }}
+          >
+            <span>{item.label}</span>
+            {hasChildren && (
+              <span className="submenu-indicator">
+                {isOpen ? '−' : '+'}
+              </span>
             )}
+          </NavLink>
+        </div>
+        {hasChildren && isOpen && (
+          <div className="mobile-submenu">
+            {item.children.map((child, idx) => (
+              <MobileMenuItem
+                key={idx}
+                item={child}
+                depth={depth + 1}
+                closeMenu={closeMenu}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  return (
+    <div className={`navigation-header ${scrolled ? 'scrolled' : ''}`}>
+      {/* Top Utility Head Bar */}
+      <div className="top-utility-bar">
+        <div className="top-utility-container">
+          <div className="top-left-section">
+            <a href="mailto:info@coels.edu" className="top-email-link">
+              <svg className="email-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <span>info@coels.edu</span>
+            </a>
+
+            <div className="latest-news-ticker">
+              <span className="ticker-label">Latest News:</span>
+              <div className="ticker-content-wrapper">
+                <div className={`ticker-item ${fadeNews ? 'fade-in' : 'fade-out'}`}>
+                  {newsItems[activeNewsIndex]}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="top-right-section">
+            <div className="quick-links-dropdown">
+              <button 
+                className="quick-links-btn"
+                onClick={() => setQuickLinksOpen(!quickLinksOpen)}
+                aria-label="Toggle Quick Links"
+              >
+                <span>Quick Links</span>
+                <span className="chevron-down-mini">&#9662;</span>
+              </button>
+              {quickLinksOpen && (
+                <ul className="quick-links-menu">
+                  {quickLinks.map((item, idx) => (
+                    <li key={idx} className="quick-link-item">
+                      <Link to={item.to} onClick={() => setQuickLinksOpen(false)}>
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
           </div>
         </div>
       </div>
-    </header>
+
+      {/* Middle branding header section */}
+      <div className="middle-branding-bar">
+        <div className="middle-branding-container">
+          <div className="nav-branding-info">
+            <Link to="/" className="branding-logo-link">
+              <img
+                src="/images/logo.JPG"
+                alt="COELS Logo"
+                className="branding-logo-image"
+              />
+              <div className="branding-text-block">
+                <h1 className="branding-title">COLLEGE OF EDUCATION AND LEGAL STUDIES</h1>
+                <p className="branding-subtitle">Nguru, Yobe State | Motto: Knowledge is Treasure</p>
+              </div>
+            </Link>
+          </div>
+
+          <div className="nav-search-section">
+            <form role="search" method="get" className="nav-search-form" onSubmit={handleSearchSubmit}>
+              <label htmlFor="branding-search-field">
+                <span className="screen-reader-text">Search for:</span>
+                <input 
+                  id="branding-search-field"
+                  type="search" 
+                  className="nav-search-field" 
+                  placeholder="Search..." 
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  name="s" 
+                  title="Search for:" 
+                />
+              </label>
+              <input type="submit" className="nav-search-submit" value="Search" />
+            </form>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Main Nav Container */}
+      <div className="nav-container">
+        {/* Scroll-Only Logo Section */}
+        <div className="nav-logo-section">
+          <Link to="/" className="logo-link">
+            <img
+              src="/images/logo.JPG"
+              alt="COELS Logo Scrolled"
+              className="nav-logo-image"
+            />
+            <div className="logo-text">
+              <span className="logo-title">COELS NGURU</span>
+              <span className="logo-subtitle">Knowledge is Treasure</span>
+            </div>
+          </Link>
+        </div>
+
+        {isMobile ? (
+          <div className="nav-mobile-buttons">
+            <button
+              className="menu-toggle"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M3 12h18M3 6h18M3 18h18"/>
+              </svg>
+            </button>
+          </div>
+        ) : (
+          <div className="nav-menu">
+            <ul className="main-nav-links">
+              {menuData.map((item, idx) => {
+                const hasChildren = item.children && item.children.length > 0;
+                return (
+                  <li key={idx} className={`desktop-menu-item ${hasChildren ? 'has-dropdown' : ''}`}>
+                    <NavLink 
+                      to={hasChildren ? "#" : item.to} 
+                      className="nav-link"
+                      onClick={(e) => {
+                        if (hasChildren) e.preventDefault();
+                      }}
+                    >
+                      <span className="nav-link-text">{item.label}</span>
+                      {hasChildren && <span className="chevron-down">&#9662;</span>}
+                    </NavLink>
+                    {hasChildren && renderDesktopDropdown(item.children)}
+                  </li>
+                );
+              })}
+            </ul>
+            <div className="user-nav-links">
+              {userNavLinks.map((link, idx) => {
+                if (link.isLogout) {
+                  return (
+                    <button key={idx} onClick={logoutHandler} className="user-link border-0 bg-transparent" style={{ cursor: 'pointer' }}>
+                      <span className="nav-link-text">{link.label}</span>
+                    </button>
+                  );
+                }
+                return (
+                  <NavLink key={idx} to={link.to} className="user-link">
+                    <span className="nav-link-text">{link.label}</span>
+                  </NavLink>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {isMobile && (
+          <div className={`nav-mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
+            <button
+              className="mobile-menu-close"
+              onClick={() => setMobileMenuOpen(false)}
+              aria-label="Close menu"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+            <div className="mobile-links">
+              <div className="mobile-menu-title">Main Menu</div>
+              {menuData.map((item, idx) => (
+                <MobileMenuItem
+                  key={idx}
+                  item={item}
+                  closeMenu={() => setMobileMenuOpen(false)}
+                />
+              ))}
+              <div className="mobile-divider"></div>
+              <div className="mobile-menu-title">Account</div>
+              {userNavLinks.map((link, idx) => {
+                if (link.isLogout) {
+                  return (
+                    <button
+                      key={idx}
+                      onClick={logoutHandler}
+                      className="mobile-link border-0 bg-transparent text-start w-100"
+                      style={{ cursor: 'pointer' }}
+                    >
+                      {link.label}
+                    </button>
+                  );
+                }
+                return (
+                  <NavLink
+                    key={idx}
+                    to={link.to}
+                    className="mobile-link"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {link.label}
+                  </NavLink>
+                );
+              })}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
   );
 };
 
