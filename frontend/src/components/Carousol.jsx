@@ -18,10 +18,7 @@ const Carousel = () => {
               className="d-block w-100 carousel-img"
               alt="The Provost"
             />
-            <div className="carousel-caption">
-              <h5>Leadership per Excellence</h5>
-              <p>The Provost</p>
-            </div>
+            
           </div>
 
           <div className="carousel-item active">
@@ -30,10 +27,7 @@ const Carousel = () => {
               className="d-block w-100 carousel-img"
               alt="The Provost"
             />
-            <div className="carousel-caption">
-              <h5>Leadership per Excellence</h5>
-              <p>The Provost</p>
-            </div>
+            
           </div>
           <div className="carousel-item active">
             <img
@@ -41,11 +35,7 @@ const Carousel = () => {
               className="d-block w-100 carousel-img"
               alt="The Provost"
             />
-            <div className="carousel-caption">
-            <h5>Leadership per Excellence</h5>
-            <p>The Provost</p>
-              
-            </div>
+            
           </div>
 
           {/* Slide 2 */}
@@ -55,10 +45,7 @@ const Carousel = () => {
               className="d-block w-100 carousel-img"
               alt="Sign Board"
             />
-            <div className="carousel-caption">
-              <h5>The College's Sign Board</h5>
-              <p>The Sign of Greatness</p>
-            </div>
+            
           </div>
 
           <div className="carousel-item active">
@@ -67,10 +54,7 @@ const Carousel = () => {
               className="d-block w-100 carousel-img"
               alt="The Provost"
             />
-            <div className="carousel-caption">
-              <h5>Leadership per Excellence</h5>
-              <p>The Provost</p>
-            </div>
+            
           </div>
 
           <div className="carousel-item">
@@ -79,10 +63,7 @@ const Carousel = () => {
               className="d-block w-100 carousel-img"
               alt="Sign Board"
             />
-            <div className="carousel-caption">
-              <h5>Staff Offices</h5>
-              <p>Offices for Efficient Services Delivery</p>
-            </div>
+            
           </div>
           <div className="carousel-item">
             <img
@@ -90,10 +71,7 @@ const Carousel = () => {
               className="d-block w-100 carousel-img"
               alt="Sign Board"
             />
-            <div className="carousel-caption">
-              <h5>Administrative Block</h5>
-              <p>Administration for Excellence</p>
-            </div>
+            
           </div>
   
 
@@ -104,10 +82,7 @@ const Carousel = () => {
               className="d-block w-100 carousel-img"
               alt="Sign Board"
             />
-            <div className="carousel-caption">
-              <h5>Staff Offices</h5>
-              <p>Offices for Efficient Services Delivery</p>
-            </div>
+            
           </div>
 
           <div className="carousel-item">
@@ -116,10 +91,7 @@ const Carousel = () => {
               className="d-block w-100 carousel-img"
               alt="Sign Board"
             />
-            <div className="carousel-caption">
-              <h5>Staff Office</h5>
-              <p>Offices for Efficient Services Delivery</p>
-            </div>
+            
           </div>
 
           <div className="carousel-item">
@@ -128,10 +100,7 @@ const Carousel = () => {
               className="d-block w-100 carousel-img"
               alt="Sign Board"
             />
-            <div className="carousel-caption">
-              <h5>Staff Offices</h5>
-              <p>Lectures Offices</p>
-            </div>
+            
           </div>
           <div className="carousel-item">
             <img
@@ -139,11 +108,7 @@ const Carousel = () => {
               className="d-block w-100 carousel-img"
               alt="Sign Board"
             />
-            <div className="carousel-caption">
-            <h5>The Administratrative Block</h5>
-              <p>The Administration Center</p>
-
-            </div>
+            
           </div>
 
           <div className="carousel-item">
@@ -152,10 +117,7 @@ const Carousel = () => {
               className="d-block w-100 carousel-img"
               alt="Sign Board"
             />
-            <div className="carousel-caption">
-              <h5>Administratrative Block</h5>
-              <p>Centre of Administration</p>
-            </div>
+            
           </div>
 
 
@@ -165,10 +127,7 @@ const Carousel = () => {
               className="d-block w-100 carousel-img"
               alt="Sign Board"
             />
-            <div className="carousel-caption">
-              <h5>The Provost</h5>
-              <p>Meet Our Dynamic Provost</p>
-            </div>
+            
           </div>
 
           <div className="carousel-item">
@@ -177,10 +136,7 @@ const Carousel = () => {
               className="d-block w-100 carousel-img"
               alt="Sign Board"
             />
-            <div className="carousel-caption">
-              <h5>Staff Office</h5>
-              <p>Office in the College</p>
-            </div>
+            
           </div>
 
           <div className="carousel-item">
@@ -189,10 +145,7 @@ const Carousel = () => {
               className="d-block w-100 carousel-img"
               alt="Sign Board"
             />
-            <div className="carousel-caption">
-              <h5>Administrative Block</h5>
-              <p>Offices for Efficient Services Delivery</p>
-            </div>
+            
           </div>
 
           <div className="carousel-item">
@@ -201,11 +154,7 @@ const Carousel = () => {
               className="d-block w-100 carousel-img"
               alt="Sign Board"
             />
-            <div className="carousel-caption">
-            <h5>Leadership per Excellence</h5>
-              <p>The Provost</p>
-
-            </div>
+            
           </div>
 
 
