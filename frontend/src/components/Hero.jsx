@@ -4,10 +4,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import CarouselSection from './Carousol';
 import CardSection from './Cards';
+import DownloadsSection from './DownloadsSection';
 
 const Hero = () => {
  return (
-   <div className='py-5'>
+   <div className='py-4'>
      <div className='d-flex flex-column flex-lg-row w-100'>
        <Container className='mb-4 mb-lg-0' style={{ width: '100%', maxWidth: '400px' }}>
          <div>
@@ -144,6 +145,9 @@ const Hero = () => {
 
      {/* Portal Access Section - full-width, between hero and explore cards */}
      <PortalAccess />
+
+     {/* Downloads Section */}
+     <DownloadsSection />
 
      {/* Card Section Below */}
      <div className='mt-4'>
