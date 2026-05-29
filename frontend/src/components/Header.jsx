@@ -17,9 +17,18 @@ const Header = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [quickLinksOpen, setQuickLinksOpen] = useState(false);
+  const [portalsOpen, setPortalsOpen] = useState(false);
   const [activeNewsIndex, setActiveNewsIndex] = useState(0);
   const [fadeNews, setFadeNews] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
+
+  // Institutional portals (external, open in a new tab)
+  const portalLinks = [
+    { label: "Admin NCE Portal",     href: "https://coelsnguru.safsrms.com",          audience: "Admin",   accent: "linear-gradient(45deg, #2193b0, #6dd5ed)" },
+    { label: "Admin Diploma Portal", href: "https://coelsnguru_diploma.safsrms.com",  audience: "Admin",   accent: "linear-gradient(45deg, #FF512F, #F09819)" },
+    { label: "Student NCE Portal",   href: "https://coelsnguru.safrecords.com",       audience: "Student", accent: "linear-gradient(45deg, #11998e, #38ef7d)" },
+    { label: "Student Diploma Portal", href: "https://coelsnguru_diploma.safrecords.com", audience: "Student", accent: "linear-gradient(45deg, #8E2DE2, #4A00E0)" },
+  ];
 
   // Custom COELS announcement notices
   const newsItems = [
@@ -69,6 +78,9 @@ const Header = () => {
     const handleOutsideClick = (e) => {
       if (!e.target.closest('.quick-links-dropdown')) {
         setQuickLinksOpen(false);
+      }
+      if (!e.target.closest('.portals-dropdown')) {
+        setPortalsOpen(false);
       }
     };
 
@@ -285,8 +297,50 @@ const Header = () => {
           </div>
 
           <div className="top-right-section">
+            <div className="portals-dropdown">
+              <button
+                className="portals-btn"
+                onClick={() => setPortalsOpen(!portalsOpen)}
+                aria-label="Toggle Portals menu"
+                aria-expanded={portalsOpen}
+              >
+                <svg className="portal-icon" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M15 3h6v6"></path>
+                  <path d="M10 14L21 3"></path>
+                  <path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"></path>
+                </svg>
+                <span>Portals</span>
+                <span className="chevron-down-mini">&#9662;</span>
+              </button>
+              {portalsOpen && (
+                <ul className="portals-menu">
+                  <li className="portals-menu-group-label">Students</li>
+                  {portalLinks.filter(p => p.audience === 'Student').map((item, idx) => (
+                    <li key={`s-${idx}`} className="portal-link-item">
+                      <a href={item.href} target="_blank" rel="noopener noreferrer" onClick={() => setPortalsOpen(false)}>
+                        <span className="portal-accent-dot" style={{ background: item.accent }} />
+                        <span>{item.label}</span>
+                        <span className="portal-external-icon" aria-hidden="true">&#8599;</span>
+                      </a>
+                    </li>
+                  ))}
+                  <li className="portals-menu-divider" role="separator" />
+                  <li className="portals-menu-group-label">Administration</li>
+                  {portalLinks.filter(p => p.audience === 'Admin').map((item, idx) => (
+                    <li key={`a-${idx}`} className="portal-link-item">
+                      <a href={item.href} target="_blank" rel="noopener noreferrer" onClick={() => setPortalsOpen(false)}>
+                        <span className="portal-accent-dot" style={{ background: item.accent }} />
+                        <span>{item.label}</span>
+                        <span className="portal-external-icon" aria-hidden="true">&#8599;</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+
             <div className="quick-links-dropdown">
-              <button 
+              <button
                 className="quick-links-btn"
                 onClick={() => setQuickLinksOpen(!quickLinksOpen)}
                 aria-label="Toggle Quick Links"
@@ -438,6 +492,22 @@ const Header = () => {
                   item={item}
                   closeMenu={() => setMobileMenuOpen(false)}
                 />
+              ))}
+              <div className="mobile-divider"></div>
+              <div className="mobile-menu-title">Portals</div>
+              {portalLinks.map((p, idx) => (
+                <a
+                  key={`mp-${idx}`}
+                  href={p.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mobile-link mobile-portal-link"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <span className="portal-accent-dot" style={{ background: p.accent }} />
+                  <span>{p.label}</span>
+                  <span className="portal-external-icon" aria-hidden="true">&#8599;</span>
+                </a>
               ))}
               <div className="mobile-divider"></div>
               <div className="mobile-menu-title">Account</div>

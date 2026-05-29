@@ -49,15 +49,26 @@ const Cards = () => {
   return (
     <section className="cards-container">
       <div className="cards-header-wrap">
-        <span className="cards-kicker">DISCOVER</span>
+        <span className="cards-kicker">DISCOVER COELS</span>
         <h2 className="cards-title">
-          Explore the College &amp; the Town of <span className="cards-title-accent">Nguru</span>
+          Where Heritage Meets <span className="cards-title-accent">Higher Learning</span>
         </h2>
-        <p className="cards-intro">
-          Located in the vibrant town of Nguru, our college thrives in an environment rich in
-          culture, history, and educational progress. Discover more about the town and the
-          individuals who shape our institution.
+        <div className="cards-divider" aria-hidden="true"></div>
+        <p className="cards-lead">
+          A college shaped by its town. A town inspired by its college.
         </p>
+        <p className="cards-intro">
+          The College of Education and Legal Studies stands at the crossroads of tradition
+          and progress in Nguru &mdash; a historic Sahelian town long renowned for its
+          scholarship, commerce and hospitality. Explore the place we call home, the
+          leaders who guide our mission, and the people who give our institution its
+          character.
+        </p>
+        <ul className="cards-tag-row" aria-label="Section themes">
+          <li>Heritage</li>
+          <li>Leadership</li>
+          <li>Community</li>
+        </ul>
       </div>
 
       <div className="row justify-content-center g-4">
