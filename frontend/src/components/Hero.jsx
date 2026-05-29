@@ -1,6 +1,5 @@
 import React from 'react';
 import { Container, Card, Button } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import CarouselSection from './Carousol';
@@ -13,53 +12,126 @@ const Hero = () => {
        <Container className='mb-4 mb-lg-0' style={{ width: '100%', maxWidth: '400px' }}>
          <div>
            <Card className='p-4 d-flex flex-column align-items-center hero-card bg-light'>
-             {/* Button Section */}
-                <div className='w-100 d-flex flex-column flex-sm-row gap-3'>
-                  <LinkContainer to='/login'>
-                    <Button variant='primary' className='w-100'>
-                      Sign In
-                    </Button>
-                  </LinkContainer>
-                  <LinkContainer to='/register'>
-                    <Button variant='secondary' className='w-100'>
-                      Register
-                    </Button>
-                  </LinkContainer>
-                </div>
-             {/* Image Grid Section */}
-             <div className='mt-5 w-100'>
-  {/* Updated image addresses */}
-                  {[
-                    { src: '/images/image7.jpg', name: 'Meet Our Provost' }, 
-                    { src: '/images/image16.jpg', name: 'Meet Our Registrar' }, 
-                    
-                  ].reduce((acc, { src, name }, index) => {
-                    // Group images into pairs
-                    if (index % 2 === 0) {
-                      acc.push([{ src, name }]); // Start a new pair
-                    } else {
-                      acc[acc.length - 1].push({ src, name }); // Add to the existing pair
-                    }
-                    return acc;
-                  }, []).map((pair, rowIndex) => (
-                    <div 
-                      key={rowIndex} 
-                      className='d-flex flex-column flex-sm-row justify-content-center mt-5 gap-3 w-100 mb-3'
-                    >
-                      {pair.map(({ src, name }, colIndex) => (
-                        <div className='w-100' key={colIndex}>
-                          <img 
-                            src={src} 
-                            alt={`Promotion ${rowIndex * 2 + colIndex + 1}`} 
-                            className='img-fluid rounded' 
-                            style={{ height: '200px', width: '100%', objectFit: 'cover' }} 
-                          />
-                          <h5 className='text-center mt-2'>{name}</h5> {/* Display the name below the image */}
-                        </div>
-                      ))}
-                    </div>
-                  ))}
-                </div>
+             {/* Leadership Section - Provost (Featured) above Registrar */}
+             <div className='w-100 d-flex flex-column gap-4'>
+
+               {/* Provost - Featured (Larger) Card */}
+               <div
+                 className='position-relative overflow-hidden rounded-4'
+                 style={{
+                   background: '#ffffff',
+                   border: '1px solid rgba(33, 147, 176, 0.15)',
+                   boxShadow: '0 6px 20px rgba(15, 32, 39, 0.08)',
+                   transition: 'transform 0.3s ease, box-shadow 0.3s ease'
+                 }}
+                 onMouseOver={e => {
+                   e.currentTarget.style.transform = 'translateY(-4px)';
+                   e.currentTarget.style.boxShadow = '0 14px 32px rgba(33, 147, 176, 0.25)';
+                 }}
+                 onMouseOut={e => {
+                   e.currentTarget.style.transform = 'translateY(0)';
+                   e.currentTarget.style.boxShadow = '0 6px 20px rgba(15, 32, 39, 0.08)';
+                 }}
+               >
+                 <div
+                   className='d-flex align-items-center justify-content-center'
+                   style={{
+                     height: '320px',
+                     background: 'linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%)',
+                     overflow: 'hidden'
+                   }}
+                 >
+                   <img
+                     src='/images/image7.jpg'
+                     alt='Promotion 1 - Meet Our Provost'
+                     style={{
+                       maxHeight: '100%',
+                       maxWidth: '100%',
+                       width: 'auto',
+                       height: 'auto',
+                       objectFit: 'contain',
+                       display: 'block'
+                     }}
+                   />
+                 </div>
+                 <div className='p-3 text-center'>
+                   <span
+                     className='d-inline-block mb-2 fw-semibold'
+                     style={{
+                       background: 'linear-gradient(45deg, #2193b0, #6dd5ed)',
+                       color: '#ffffff',
+                       padding: '5px 14px',
+                       borderRadius: '20px',
+                       fontSize: '0.7rem',
+                       letterSpacing: '1.5px'
+                     }}
+                   >
+                     LEADERSHIP
+                   </span>
+                   <h4 className='fw-bold mb-1' style={{ color: '#0f2027' }}>Meet Our Provost</h4>
+                   <p className='small text-muted mb-0'>Office of the Provost</p>
+                 </div>
+               </div>
+
+               {/* Registrar - Compact Card */}
+               <div
+                 className='position-relative overflow-hidden rounded-4'
+                 style={{
+                   background: '#ffffff',
+                   border: '1px solid rgba(255, 81, 47, 0.15)',
+                   boxShadow: '0 4px 16px rgba(15, 32, 39, 0.06)',
+                   transition: 'transform 0.3s ease, box-shadow 0.3s ease'
+                 }}
+                 onMouseOver={e => {
+                   e.currentTarget.style.transform = 'translateY(-3px)';
+                   e.currentTarget.style.boxShadow = '0 10px 24px rgba(255, 81, 47, 0.22)';
+                 }}
+                 onMouseOut={e => {
+                   e.currentTarget.style.transform = 'translateY(0)';
+                   e.currentTarget.style.boxShadow = '0 4px 16px rgba(15, 32, 39, 0.06)';
+                 }}
+               >
+                 <div
+                   className='d-flex align-items-center justify-content-center'
+                   style={{
+                     height: '200px',
+                     background: 'linear-gradient(135deg, #3a1c0c 0%, #6e2a14 50%, #a83e1f 100%)',
+                     overflow: 'hidden'
+                   }}
+                 >
+                   <img
+                     src='/images/image16.jpg'
+                     alt='Promotion 2 - Meet Our Registrar'
+                     style={{
+                       maxHeight: '100%',
+                       maxWidth: '100%',
+                       width: 'auto',
+                       height: 'auto',
+                       objectFit: 'contain',
+                       display: 'block'
+                     }}
+                   />
+                 </div>
+                 <div className='p-3 text-center'>
+                   <span
+                     className='d-inline-block mb-2 fw-semibold'
+                     style={{
+                       background: 'linear-gradient(45deg, #FF512F, #F09819)',
+                       color: '#ffffff',
+                       padding: '4px 12px',
+                       borderRadius: '20px',
+                       fontSize: '0.65rem',
+                       letterSpacing: '1.5px'
+                     }}
+                   >
+                     ADMINISTRATION
+                   </span>
+                   <h5 className='fw-bold mb-1' style={{ color: '#3a1c0c' }}>Meet Our Registrar</h5>
+                   <p className='small text-muted mb-0'>Office of the Registrar</p>
+                 </div>
+               </div>
+
+             </div>
            </Card>
          </div>
        </Container>
