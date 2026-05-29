@@ -1,0 +1,99 @@
+/* ===== College Name Banner =====
+   Sits directly below the fixed .navigation-header.
+   The margin-top values compensate for the total fixed-header
+   height at each breakpoint so the banner is never clipped. */
+
+.college-name-banner {
+  /* Desktop (≥1025px): utility 40 + branding 90 + nav 80 = 210px */
+  margin-top: 210px;
+  background:
+    linear-gradient(135deg, #0f2027 0%, #203a43 55%, #2c5364 100%);
+  color: #ffffff;
+  text-align: center;
+  padding: clamp(1.25rem, 3.5vw, 2.25rem) 1rem;
+  border-bottom: 3px solid #2193b0;
+  box-shadow: 0 4px 18px rgba(15, 32, 39, 0.18);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle decorative top highlight to tie into the brand cyan */
+.college-name-banner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, #6dd5ed 50%, transparent 100%);
+  opacity: 0.6;
+}
+
+.college-name-banner__title {
+  margin: 0 0 0.35rem 0;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+  font-size: clamp(1.1rem, 3.2vw, 1.85rem);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.college-name-banner__title-accent {
+  background: linear-gradient(90deg, #6dd5ed 0%, #ffffff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.college-name-banner__motto {
+  margin: 0;
+  font-weight: 500;
+  font-style: italic;
+  color: #cbd5e1;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: clamp(0.7rem, 1.6vw, 0.9rem);
+}
+
+.college-name-banner__motto::before,
+.college-name-banner__motto::after {
+  content: "•";
+  color: #2193b0;
+  margin: 0 0.6rem;
+  opacity: 0.8;
+}
+
+/* Tablet & small-desktop: branding bar compresses to 68, nav to 70 */
+@media (max-width: 1024px) {
+  .college-name-banner {
+    /* 40 + 68 + 70 = 178px */
+    margin-top: 178px;
+    padding: clamp(1rem, 3vw, 1.5rem) 0.75rem;
+  }
+}
+
+/* Phones: same fixed-header height, just tighter internal padding */
+@media (max-width: 640px) {
+  .college-name-banner {
+    margin-top: 178px;
+    padding: 0.9rem 0.75rem;
+  }
+
+  .college-name-banner__title {
+    letter-spacing: 0.25px;
+  }
+
+  .college-name-banner__motto::before,
+  .college-name-banner__motto::after {
+    margin: 0 0.4rem;
+  }
+}
+
+/* Very small phones — drop the bullet flourishes if they crowd the line */
+@media (max-width: 360px) {
+  .college-name-banner__motto::before,
+  .college-name-banner__motto::after {
+    display: none;
+  }
+}
