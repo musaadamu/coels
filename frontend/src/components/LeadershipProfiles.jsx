@@ -26,7 +26,7 @@ const LeadershipProfiles = () => {
       name: 'Bukar Alhaji Musa',
       office: 'Registry Office',
       bio: 'Managing academic records, admissions, and student services.',
-      image: '/images/image32.jpg',
+      image: '/images/image32.JPG',
       email: 'registrar@coels.edu.ng',
       
     },
@@ -35,7 +35,7 @@ const LeadershipProfiles = () => {
       name: 'Maidunoma Zanna',
       office: 'Academic Planning',
       bio: 'Overseeing curriculum development and academic excellence.',
-      image: '/images/image29.jpg',
+      image: '/images/image29.JPG',
       email: 'academics@coels.edu.ng',
       
     },
@@ -53,7 +53,7 @@ const LeadershipProfiles = () => {
       name: 'Ibrahim Yakubu Haruna',
       office: 'Works Department',
       bio: 'Overseeing maintenance, works, and infrastructure development.',
-      image: '/images/image35.JPG',
+      image: '/images/image36.JPG',
       email: 'works@coels.edu.ng',
       
     },
@@ -62,7 +62,7 @@ const LeadershipProfiles = () => {
       name: 'Haladu Al-Badamasi',
       office: 'Library Department',
       bio: 'Leading library services, resources, and academic information support.',
-      image: '/images/image36.JPG',
+      image: '/images/image35.JPG',
       email: 'library@coels.edu.ng',
     
     }
