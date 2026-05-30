@@ -21,11 +21,29 @@
 .hero-carousel-inner {
   width: 100%;
   aspect-ratio: 16 / 9;
+  /* Fallback for older browsers */
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 ratio */
+  height: 0;
+}
+
+.hero-carousel-inner {
+  height: auto;
+  padding-bottom: 0;
 }
 
 .hero-carousel-inner .carousel-item {
+  width: 100%;
   height: 100%;
-  transition: opacity 0.9s ease-in-out;
+  position: relative;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+}
+
+.hero-carousel-inner .carousel-item.active {
+  opacity: 1;
+  z-index: 1;
 }
 
 .hero-slide-frame {
@@ -40,19 +58,20 @@
 }
 
 .hero-slide-img {
+  width: 100%;
+  height: 100%;
   max-width: 100%;
   max-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
+  object-fit: cover;
   display: block;
   transform: scale(1);
-  transition: transform 7s ease-out;
+  transition: transform 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
 }
 
 /* Subtle Ken-Burns on the active slide */
 .carousel-item.active .hero-slide-img {
-  transform: scale(1.06);
+  transform: scale(1.05);
 }
 
 /* Soft inner vignette for cinematic depth */
@@ -140,6 +159,19 @@
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
   .hero-carousel { border-radius: 14px; }
+  
+  .hero-carousel-inner {
+    aspect-ratio: 5 / 4;
+  }
+  
+  .hero-slide-img {
+    transition: transform 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  
+  .carousel-item.active .hero-slide-img {
+    transform: scale(1.03);
+  }
+  
   .hero-carousel-control {
     width: 42px;
     height: 42px;
@@ -153,5 +185,41 @@
 }
 
 @media (max-width: 480px) {
-  .hero-carousel-inner { aspect-ratio: 4 / 3; }
+  .hero-carousel { border-radius: 12px; }
+  
+  .hero-carousel-inner {
+    aspect-ratio: 4 / 3;
+  }
+  
+  .hero-slide-img {
+    transition: transform 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  
+  .carousel-item.active .hero-slide-img {
+    transform: scale(1.02);
+  }
+  
+  .hero-carousel-control {
+    width: 38px;
+    height: 38px;
+    opacity: 0.8;
+  }
+  
+  .hero-carousel-control:active {
+    opacity: 1;
+  }
+  
+  .hero-carousel-arrow { 
+    font-size: 1.25rem; 
+  }
+  
+  .hero-carousel-indicators [data-bs-target] {
+    width: 8px;
+    height: 8px;
+    margin: 0 3px;
+  }
+  
+  .hero-carousel-indicators .active { 
+    width: 20px; 
+  }
 }

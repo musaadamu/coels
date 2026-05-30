@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Carousol.css';
 
 const slides = [
@@ -18,6 +18,29 @@ const slides = [
 const CAROUSEL_ID = 'heroCarousel';
 
 const Carousel = () => {
+  useEffect(() => {
+    // Initialize Bootstrap Carousel
+    const carouselElement = document.getElementById(CAROUSEL_ID);
+    if (carouselElement) {
+      // Import Bootstrap Carousel class dynamically
+      try {
+        const BSCarousel = window.bootstrap?.Carousel;
+        if (BSCarousel) {
+          const carousel = new BSCarousel(carouselElement, {
+            interval: 4000,
+            pause: 'hover',
+            ride: 'carousel',
+          });
+          
+          // Ensure carousel cycles continuously
+          carousel.cycle();
+        }
+      } catch (error) {
+        console.warn('Bootstrap Carousel initialization:', error);
+      }
+    }
+  }, []);
+
   return (
     <div className="hero-carousel-wrapper">
       <div
@@ -50,7 +73,12 @@ const Carousel = () => {
               className={`carousel-item${i === 0 ? ' active' : ''}`}
             >
               <div className="hero-slide-frame">
-                <img src={s.src} alt={s.alt} className="hero-slide-img" />
+                <img 
+                  src={s.src} 
+                  alt={s.alt} 
+                  className="hero-slide-img"
+                  loading={i === 0 ? 'eager' : 'lazy'}
+                />
                 <div className="hero-slide-vignette" aria-hidden="true" />
               </div>
             </div>
