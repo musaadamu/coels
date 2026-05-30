@@ -76,7 +76,7 @@
 /* Phones: same fixed-header height, just tighter internal padding */
 @media (max-width: 640px) {
   .college-name-banner {
-    margin-top: 190px;
+    margin-top: 205px;
     padding: 1.05rem 0.85rem;
   }
 
