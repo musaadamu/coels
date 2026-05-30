@@ -22,7 +22,7 @@ const LeadershipProfiles = () => {
     },
     {
       title: 'Registrar',
-      name: 'Bukar Alhaji Musa',
+      name: 'Alhaji Bukar Musa',
       office: 'Registry Office',
       bio: 'Managing academic records, admissions, and student services.',
       image: '/images/image32.JPG',
