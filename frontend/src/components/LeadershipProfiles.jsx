@@ -10,7 +10,6 @@ const LeadershipProfiles = () => {
       bio: 'Leading the college with vision and excellence in academic and administrative affairs.',
       image: '/images/image33.JPG',
       email: 'provost@coels.edu.ng',
-      icon: '👨‍🏫'
     },
     {
       title: 'Deputy Provost',
@@ -35,7 +34,7 @@ const LeadershipProfiles = () => {
       name: 'Maidunoma Zanna',
       office: 'Academic Planning',
       bio: 'Overseeing curriculum development and academic excellence.',
-      image: '/images/image29.JPG',
+      image: '/images/image37.JPG',
       email: 'academics@coels.edu.ng',
       
     },
