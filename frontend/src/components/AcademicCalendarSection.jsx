@@ -3,12 +3,15 @@ import './AcademicCalendarSection.css';
 
 const AcademicCalendarSection = () => {
   const calendarEvents = [
-    { date: 'September 1, 2024', event: 'Academic Session Begins', type: 'start', icon: '🎓' },
-    { date: 'October 15, 2024', event: 'Mid-Semester Examination', type: 'exam', icon: '📝' },
-    { date: 'December 20, 2024', event: 'First Semester Ends', type: 'end', icon: '✅' },
-    { date: 'January 15, 2025', event: 'Second Semester Begins', type: 'start', icon: '📚' },
-    { date: 'March 10, 2025', event: 'Mid-Semester Examination', type: 'exam', icon: '✏️' },
-    { date: 'May 25, 2025', event: 'Academic Session Ends', type: 'end', icon: '🎉' },
+    { date: '8 Dec 2025', event: 'Commencement of Registration Exercise (2025/2026)', type: 'start', icon: '🗓️' },
+    { date: '15 Dec 2025', event: 'Commencement of Lectures (First Semester)', type: 'start', icon: '🎓' },
+    { date: '5 Jan 2026', event: 'Late Registration Period', type: 'exam', icon: '📝' },
+    { date: '9 Mar 2026', event: 'Ramadan Break', type: 'end', icon: '🌙' },
+    { date: '13 Apr 2026', event: 'First Semester Examinations', type: 'exam', icon: '✍️' },
+    { date: '11 May 2026', event: 'Commencement and Ending of Second Semester Lectures', type: 'start', icon: '📚' },
+    { date: '24 Aug 2026', event: 'Second Semester Examinations', type: 'exam', icon: '📝' },
+    { date: '14 Sep 2026', event: 'SIWES and Court Attachment Period (Diploma)', type: 'start', icon: '🏗️' },
+    { date: '28 Sep 2026', event: 'External Moderation & Consideration of Results', type: 'end', icon: '✅' },
   ];
 
   return (
@@ -18,7 +21,7 @@ const AcademicCalendarSection = () => {
         <div className="calendar-header">
           <span className="calendar-eyebrow">📅 ACADEMIC SCHEDULE</span>
           <h2 className="calendar-title">
-            Academic <span className="calendar-accent">Calendar 2024/2025</span>
+            Academic <span className="calendar-accent">Calendar 2025/2026</span>
           </h2>
           <p className="calendar-subtitle">
             Important dates and key events for the current academic session
@@ -27,11 +30,15 @@ const AcademicCalendarSection = () => {
 
         {/* Calendar Download Button */}
         <div className="calendar-download-area">
-          <button className="download-calendar-btn">
+          <a
+            className="download-calendar-btn"
+            href="/downloads/Proposed_2025_2026_Calendar_Updated.docx"
+            download="Proposed_2025_2026_Calendar_Updated.docx"
+          >
             <span className="btn-icon">📥</span>
             <span className="btn-text">Download Full Calendar</span>
-          </button>
-          <p className="calendar-note">Available in PDF format - Print friendly</p>
+          </a>
+          <p className="calendar-note">Download the full calendar (DOCX)</p>
         </div>
 
         {/* Events Timeline */}
