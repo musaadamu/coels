@@ -8,16 +8,16 @@ const LeadershipProfiles = () => {
       name: 'Professor Ali Usman Manzo',
       office: 'Office of the Provost',
       bio: 'Leading the college with vision and excellence in academic and administrative affairs.',
-      image: '/image33.jpg',
+      image: '/images/image33.JPG',
       email: 'provost@coels.edu.ng',
-      
+      icon: '👨‍🏫'
     },
     {
       title: 'Deputy Provost',
       name: 'Dr Muhammad Muhammad Ali',
       office: 'Office of the Deputy Provost',
       bio: 'Supporting institutional development and strategic initiatives.',
-      image: '/images/image31.jpg',
+      image: '/images/image31.JPG',
       email: 'deputyprovost@coels.edu.ng',
       
     },
@@ -44,7 +44,7 @@ const LeadershipProfiles = () => {
       name: 'Ibrahim Tanko Nguru',
       office: 'Office of the Bursar',
       bio: 'Managing the financial operations of the institution.',
-      image: '/images/image34.jpg',
+      image: '/images/image34.JPG',
       email: 'bursar@coels.edu.ng',
       
     },
@@ -53,7 +53,7 @@ const LeadershipProfiles = () => {
       name: 'Ibrahim Yakubu Haruna',
       office: 'Works Department',
       bio: 'Overseeing maintenance, works, and infrastructure development.',
-      image: '/images/image35.jpg',
+      image: '/images/image35.JPG',
       email: 'works@coels.edu.ng',
       
     },
@@ -62,7 +62,7 @@ const LeadershipProfiles = () => {
       name: 'Haladu Al-Badamasi',
       office: 'Library Department',
       bio: 'Leading library services, resources, and academic information support.',
-      image: '/images/image36.jpg',
+      image: '/images/image36.JPG',
       email: 'library@coels.edu.ng',
     
     }
