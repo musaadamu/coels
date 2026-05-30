@@ -5,37 +5,37 @@ const LeadershipProfiles = () => {
   const leaders = [
     {
       title: 'Provost',
-      name: 'Prof. [Provost Name]',
+      name: 'Professor Ali Usman Manzo',
       office: 'Office of the Provost',
       bio: 'Leading the college with vision and excellence in academic and administrative affairs.',
-      image: '/images/image7.jpg',
+      image: '/images/image12.jpg',
       email: 'provost@coels.edu.ng',
       icon: '👨‍🏫'
     },
     {
       title: 'Deputy Provost',
-      name: 'Dr. [Deputy Provost Name]',
+      name: 'Muhammad Muhammad Ali',
       office: 'Office of the Deputy Provost',
       bio: 'Supporting institutional development and strategic initiatives.',
-      image: '/images/image10.jpg',
+      image: '/images/image7.jpg',
       email: 'deputyprovost@coels.edu.ng',
       icon: '👩‍🏫'
     },
     {
       title: 'Registrar',
-      name: 'Mr. [Registrar Name]',
+      name: 'Bukar Alhaji Musa',
       office: 'Registry Office',
       bio: 'Managing academic records, admissions, and student services.',
-      image: '/images/image1.jpg',
+      image: '/images/image16.jpg',
       email: 'registrar@coels.edu.ng',
       icon: '📋'
     },
     {
-      title: 'Director of Academic Affairs',
-      name: 'Prof. [Director Name]',
-      office: 'Academic Affairs',
+      title: 'Director of Academic Planning',
+      name: 'Maidunoma Zanna',
+      office: 'Academic Planning',
       bio: 'Overseeing curriculum development and academic excellence.',
-      image: '/images/image5.jpg',
+      image: '/images/image29.jpg',
       email: 'academics@coels.edu.ng',
       icon: '🎓'
     }

@@ -106,8 +106,7 @@ const StatsSection = () => {
         {/* Note */}
         <div className="stats-note">
           <p>
-            <strong>Note:</strong> Diploma enrollment includes spillover students from the Academic Secretary's office. 
-            Final numbers updated regularly.
+            <strong>Session:</strong> The current academic session is 2025/2026. Final numbers updated regularly.
           </p>
         </div>
       </div>
