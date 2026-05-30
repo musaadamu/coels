@@ -508,8 +508,7 @@
   width: 100%;
   max-width: 1600px;
   margin: 0 auto;
-  padding: 1rem;
-  min-height: 90px;
+  padding: 0.75rem 1rem;
 }
 
 .nav-branding-info {
@@ -952,7 +951,7 @@
   }
 
   .middle-branding-container {
-    padding: 1rem 0.75rem;
+    padding: 0.7rem 0.75rem;
     align-items: center;
     justify-content: flex-start;
   }
@@ -968,14 +967,14 @@
   /* Compact branding bar on mobile */
   .middle-branding-bar {
     height: auto;
-    min-height: 100px;
-    padding: 1.5rem 1rem;
+    min-height: auto;
+    padding: 0.75rem 1rem;
     display: flex;
     align-items: center;
   }
 
   .branding-text-block {
-    padding: 0.75rem 0.5rem;
+    padding: 0.4rem 0.5rem;
   }
 
   .branding-title {
@@ -1023,17 +1022,17 @@
 /* Extra small devices (max-width: 640px) */
 @media (max-width: 640px) {
   .middle-branding-bar {
-    min-height: 120px;
-    padding: 1.75rem 0.75rem;
+    min-height: auto;
+    padding: 0.8rem 0.75rem;
   }
 
   .middle-branding-container {
-    padding: 1.25rem 0.5rem;
+    padding: 0.75rem 0.5rem;
     flex-direction: row;
   }
 
   .branding-text-block {
-    padding: 0.85rem 0.6rem;
+    padding: 0.4rem 0.6rem;
   }
 
   .branding-title {
@@ -1044,7 +1043,7 @@
   .branding-subtitle {
     font-size: 0.7rem;
     line-height: 1.15;
-    margin-top: 0.3rem;
+    margin-top: 0.15rem;
   }
 
   .branding-logo-image {
@@ -1056,12 +1055,12 @@
 /* Very small devices (max-width: 480px) */
 @media (max-width: 480px) {
   .middle-branding-bar {
-    min-height: 130px;
-    padding: 2rem 0.6rem;
+    min-height: auto;
+    padding: 0.85rem 0.6rem;
   }
 
   .branding-text-block {
-    padding: 1rem 0.5rem;
+    padding: 0.45rem 0.5rem;
   }
 
   .branding-title {
@@ -1072,7 +1071,7 @@
   .branding-subtitle {
     font-size: 0.65rem;
     line-height: 1.15;
-    margin-top: 0.35rem;
+    margin-top: 0.15rem;
   }
 
   .branding-logo-image {
