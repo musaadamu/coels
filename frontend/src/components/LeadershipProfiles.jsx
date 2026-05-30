@@ -17,7 +17,7 @@ const LeadershipProfiles = () => {
       name: 'Muhammad Muhammad Ali',
       office: 'Office of the Deputy Provost',
       bio: 'Supporting institutional development and strategic initiatives.',
-      image: '/images/image7.jpg',
+      image: '/images/image30.jpg',
       email: 'deputyprovost@coels.edu.ng',
       icon: '👩‍🏫'
     },
