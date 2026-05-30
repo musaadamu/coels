@@ -10,7 +10,7 @@
     linear-gradient(135deg, #0f2027 0%, #203a43 55%, #2c5364 100%);
   color: #ffffff;
   text-align: center;
-  padding: clamp(1.25rem, 3.5vw, 2.25rem) 1rem;
+  padding: clamp(2rem, 4.5vw, 3.5rem) 1rem;
   border-bottom: 3px solid #2193b0;
   box-shadow: 0 4px 18px rgba(15, 32, 39, 0.18);
   position: relative;
@@ -69,7 +69,7 @@
   .college-name-banner {
     /* 40 + 68 + 70 = 178px */
     margin-top: 178px;
-    padding: clamp(1rem, 3vw, 1.5rem) 0.75rem;
+    padding: clamp(1.75rem, 4vw, 2.5rem) 0.75rem;
   }
 }
 
@@ -77,11 +77,17 @@
 @media (max-width: 640px) {
   .college-name-banner {
     margin-top: 190px;
-    padding: 1.15rem 0.75rem 0.9rem;
+    padding: 1.75rem 0.75rem 1.5rem;
   }
 
   .college-name-banner__title {
     letter-spacing: 0.25px;
+    font-size: clamp(1rem, 2.8vw, 1.5rem);
+    margin-bottom: 0.5rem;
+  }
+
+  .college-name-banner__motto {
+    font-size: clamp(0.65rem, 1.4vw, 0.8rem);
   }
 
   .college-name-banner__motto::before,
@@ -90,8 +96,46 @@
   }
 }
 
+/* Medium phones (480px - 640px) */
+@media (max-width: 768px) and (min-width: 641px) {
+  .college-name-banner {
+    padding: 1.6rem 0.75rem 1.35rem;
+  }
+}
+
+/* Small phones (max-width: 480px) */
+@media (max-width: 480px) {
+  .college-name-banner {
+    margin-top: 190px;
+    padding: 1.85rem 0.65rem 1.6rem;
+  }
+
+  .college-name-banner__title {
+    font-size: clamp(0.95rem, 2.5vw, 1.35rem);
+    margin-bottom: 0.55rem;
+  }
+
+  .college-name-banner__motto {
+    font-size: clamp(0.6rem, 1.2vw, 0.75rem);
+    letter-spacing: 0.8px;
+  }
+
+  .college-name-banner__motto::before,
+  .college-name-banner__motto::after {
+    margin: 0 0.3rem;
+  }
+}
+
 /* Very small phones — drop the bullet flourishes if they crowd the line */
 @media (max-width: 360px) {
+  .college-name-banner {
+    padding: 2rem 0.6rem 1.75rem;
+  }
+
+  .college-name-banner__title {
+    font-size: clamp(0.9rem, 2.2vw, 1.2rem);
+  }
+
   .college-name-banner__motto::before,
   .college-name-banner__motto::after {
     display: none;
