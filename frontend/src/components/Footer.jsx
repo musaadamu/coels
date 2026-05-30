@@ -5,7 +5,7 @@ import {
   FaXTwitter,
   FaInstagram,
   FaLinkedinIn,
-  FaMapMarkerAlt,
+  FaLocationDot,
   FaPhone,
   FaEnvelope,
 } from 'react-icons/fa6';
@@ -76,7 +76,7 @@ export default function Footer() {
               <h5 className="footer-heading">Contact Us</h5>
               <div className="contact-info">
                 <p>
-                  <span className="contact-icon"><FaMapMarkerAlt /></span>
+                  <span className="contact-icon"><FaLocationDot /></span>
                   <span>
                     <strong>Address</strong>
                     PMB 121, Along Nguru-Gashua Road,<br />
