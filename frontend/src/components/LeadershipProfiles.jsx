@@ -8,27 +8,27 @@ const LeadershipProfiles = () => {
       name: 'Professor Ali Usman Manzo',
       office: 'Office of the Provost',
       bio: 'Leading the college with vision and excellence in academic and administrative affairs.',
-      image: '/images/image12.jpg',
+      image: '/image33.jpg',
       email: 'provost@coels.edu.ng',
-      icon: '👨‍🏫'
+      
     },
     {
       title: 'Deputy Provost',
       name: 'Dr Muhammad Muhammad Ali',
       office: 'Office of the Deputy Provost',
       bio: 'Supporting institutional development and strategic initiatives.',
-      image: '/images/image30.jpg',
+      image: '/images/image31.jpg',
       email: 'deputyprovost@coels.edu.ng',
-      icon: '👩‍🏫'
+      
     },
     {
       title: 'Registrar',
       name: 'Bukar Alhaji Musa',
       office: 'Registry Office',
       bio: 'Managing academic records, admissions, and student services.',
-      image: '/images/image16.jpg',
+      image: '/images/image32.jpg',
       email: 'registrar@coels.edu.ng',
-      icon: '📋'
+      
     },
     {
       title: 'Director of Academic Planning',
@@ -37,7 +37,34 @@ const LeadershipProfiles = () => {
       bio: 'Overseeing curriculum development and academic excellence.',
       image: '/images/image29.jpg',
       email: 'academics@coels.edu.ng',
-      icon: '🎓'
+      
+    },
+    {
+      title: 'Bursar',
+      name: 'Ibrahim Tanko Nguru',
+      office: 'Office of the Bursar',
+      bio: 'Managing the financial operations of the institution.',
+      image: '/images/image34.jpg',
+      email: 'bursar@coels.edu.ng',
+      
+    },
+    {
+      title: 'Head of Works',
+      name: 'Ibrahim Yakubu Haruna',
+      office: 'Works Department',
+      bio: 'Overseeing maintenance, works, and infrastructure development.',
+      image: '/images/image35.jpg',
+      email: 'works@coels.edu.ng',
+      
+    },
+    {
+      title: 'Chief Librarian',
+      name: 'Haladu Al-Badamasi',
+      office: 'Library Department',
+      bio: 'Leading library services, resources, and academic information support.',
+      image: '/images/image36.jpg',
+      email: 'library@coels.edu.ng',
+    
     }
   ];
 
