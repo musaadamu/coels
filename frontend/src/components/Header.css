@@ -508,7 +508,8 @@
   width: 100%;
   max-width: 1600px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 1rem;
+  min-height: 90px;
 }
 
 .nav-branding-info {
@@ -950,6 +951,12 @@
     height: 70px;
   }
 
+  .middle-branding-container {
+    padding: 1rem 0.75rem;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
   .navigation-header.scrolled .nav-container {
     height: 60px;
   }
@@ -960,19 +967,32 @@
 
   /* Compact branding bar on mobile */
   .middle-branding-bar {
-    height: 68px;
+    height: auto;
+    min-height: 100px;
+    padding: 1.5rem 1rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .branding-text-block {
+    padding: 0.75rem 0.5rem;
   }
 
   .branding-title {
     font-size: 1.05rem;
+    line-height: 1.15;
   }
 
   .branding-subtitle {
     font-size: 0.75rem;
+    line-height: 1.1;
+    margin-top: 0.25rem;
   }
 
   .branding-logo-image {
     height: 44px;
+    margin-right: 10px;
+    flex-shrink: 0;
   }
 
   /* Hide search bar on mobile */
@@ -997,6 +1017,67 @@
 @media (min-width: 1025px) {
   .nav-container {
     padding: 0 1.5rem;
+  }
+}
+
+/* Extra small devices (max-width: 640px) */
+@media (max-width: 640px) {
+  .middle-branding-bar {
+    min-height: 120px;
+    padding: 1.75rem 0.75rem;
+  }
+
+  .middle-branding-container {
+    padding: 1.25rem 0.5rem;
+    flex-direction: row;
+  }
+
+  .branding-text-block {
+    padding: 0.85rem 0.6rem;
+  }
+
+  .branding-title {
+    font-size: 0.95rem;
+    line-height: 1.2;
+  }
+
+  .branding-subtitle {
+    font-size: 0.7rem;
+    line-height: 1.15;
+    margin-top: 0.3rem;
+  }
+
+  .branding-logo-image {
+    height: 40px;
+    margin-right: 8px;
+  }
+}
+
+/* Very small devices (max-width: 480px) */
+@media (max-width: 480px) {
+  .middle-branding-bar {
+    min-height: 130px;
+    padding: 2rem 0.6rem;
+  }
+
+  .branding-text-block {
+    padding: 1rem 0.5rem;
+  }
+
+  .branding-title {
+    font-size: 0.9rem;
+    line-height: 1.2;
+  }
+
+  .branding-subtitle {
+    font-size: 0.65rem;
+    line-height: 1.15;
+    margin-top: 0.35rem;
+  }
+
+  .branding-logo-image {
+    height: 38px;
+    margin-right: 6px;
   }
 }
 
