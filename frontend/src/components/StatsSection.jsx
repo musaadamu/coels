@@ -63,7 +63,7 @@ const StatsSection = () => {
             Current Student <span className="stats-accent">Enrollment</span>
           </h2>
           <p className="stats-subtitle">
-            2024/2025 Academic Session - Total Active Students
+            2025/2026 Academic Session - Total Active Students
           </p>
         </div>
 
