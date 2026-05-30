@@ -14,7 +14,7 @@ const LeadershipProfiles = () => {
     },
     {
       title: 'Deputy Provost',
-      name: 'Muhammad Muhammad Ali',
+      name: 'Dr Muhammad Muhammad Ali',
       office: 'Office of the Deputy Provost',
       bio: 'Supporting institutional development and strategic initiatives.',
       image: '/images/image30.jpg',
